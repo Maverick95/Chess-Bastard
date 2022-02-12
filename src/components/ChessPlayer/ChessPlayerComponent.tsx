@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Player from '../../models/Player';
 import GetPlayerService from '../../services/GetPlayerService';
+import './ChessPlayerComponent.css';
 
 interface IProps {
     username: string;
@@ -33,7 +34,18 @@ const ChessPlayerComponent: React.FC<IProps> = ({username}) => {
     const src = state.player?.avatar ?? avatarDefault;
 
     return (
-        <img {...{src, alt: "Avatar here!"}} /> 
+        <section className="chess-player-card">
+            <header className="chess-player-header chess-border-theme">
+                {username}
+            </header>
+            <div className="chess-player-avatar">
+                <img className="chess-border-theme" {...{ width: 200, height: 200, src, alt: `Avatar for ${username}`}} />
+            </div>
+            <div className="chess-player-content">
+                <div>last seen</div>
+                <div className="chess-player-last-seen">27 days ago</div>
+            </div>
+        </section>
     );
 };
 
