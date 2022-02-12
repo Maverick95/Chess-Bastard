@@ -20,6 +20,7 @@
     "jest": "27.5.0",
     "babel-loader": "8.2.3",
     "html-webpack-plugin": "5.5.0",
+    "copy-webpack-plugin": "10.2.4",
     "@types/react": "17.0.39",
     "@types/jest": "27.4.0",
     "@testing-library/react": "12.1.2"

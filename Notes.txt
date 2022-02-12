@@ -1,0 +1,35 @@
+So, what first then?
+
+I guess at first I would like to see what API calls I can make.
+
+The initial aim is to see whether I can detect, "is player currently playing?"
+
+Also maybe fetch certain details?
+
+Lets see the API calls?
+
+Images are 200 x 200 pixels, this should be standard.
+
+So what I would like to do, as a first exercise, is to see whether you can keep a list of
+players' names in a JSON file somewhere, parse this, and for each user, create a separate
+grid-tab showing key details for the user.
+
+The last login time is not shown in time but in a useful format,
+either
+X minutes ago Green
+X hours ago Orange / yellow
+X days ago Grey
+whichever is the minimum that fits
+
+So best get started with the JSON? Or with the links?
+
+I would say the links.
+
+So begin with just a simple component, username prop
+
+Initially component will just have a set state of Loading.
+
+Yeah I remember this they use a reducer with a state of LOADING.
+
+Since these are 200 x 200, draw up a default img to use.
+

@@ -29,8 +29,8 @@ const ChessPlayerComponent: React.FC<IProps> = ({username}) => {
         getData();
     }, [username]);
 
-    // TODO - use project root to get image.
-    const src = state.player?.avatar ?? '../src/assets/default_player.jpg';
+    const avatarDefault = "./assets/default_player.jpg";
+    const src = state.player?.avatar ?? avatarDefault;
 
     return (
         <img {...{src, alt: "Avatar here!"}} /> 
