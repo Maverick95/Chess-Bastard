@@ -22,4 +22,8 @@ module.exports = {
                 template: 'index.html'
             })
         ],
+    resolve: {
+        modules: ['node_modules', path.resolve(__dirname, 'src')],
+        extensions: [".js", ".jsx", ".ts", ".tsx"]
+    }
 };
