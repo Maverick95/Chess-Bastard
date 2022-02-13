@@ -41,9 +41,4 @@ I would say, designing the simple card structure to show the player.
 
 How about ripping off say a common playing card design?
 
-Next step is I would like to process the last login date and accurately update the state in this way.
-
-"
-All time fields are expressed as "timestamp", which is a number calculated as the time measured
-in the number of seconds since the Unix Epoch (January 1 1970 00:00:00 GMT).
-"
+Done, next!
