@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import Player from '../../models/Player';
 import GetPlayerService from '../../services/GetPlayerService';
 import './ChessPlayerComponent.css';
@@ -14,19 +14,16 @@ interface IState {
 }
 
 const LoadingComponent: React.FC = () => (
-    <section className="chess-player-card chess-centered">
-        <div className="chess-player-avatar">
-            <img className="chess-player-loading" {...{ width: 200, height: 200, src: './assets/loading.png', alt: 'Loading...' }} />
-        </div>
-    </section>
+    <div className="chess-player-avatar">
+        <img className="chess-player-loading" {...{ width: 200, height: 200, src: './assets/loading.png', alt: 'Loading...' }} />
+    </div>
 );
 
-
 const ErrorComponent: React.FC<IProps>= ({username}) => (
-    <section className="chess-player-card chess-centered">
+    <>
         <div>error loading</div>
         <div className="chess-detail-standout">{username}</div>
-    </section>
+    </>
 );
 
 const SuccessComponent: React.FC<Player> = ({ username, avatar, lastOnline }) => {
@@ -35,7 +32,7 @@ const SuccessComponent: React.FC<Player> = ({ username, avatar, lastOnline }) =>
     const { difference } = getDateTimeDifferenceDescription(lastOnline);
 
     return (
-    <section className="chess-player-card">
+    <>
         <header className="chess-player-header chess-border-theme">
             {username}
         </header>
@@ -46,7 +43,7 @@ const SuccessComponent: React.FC<Player> = ({ username, avatar, lastOnline }) =>
             <div>last seen</div>
             <div className="chess-detail-standout">{difference}</div>
         </div>
-    </section>
+    </>
     );
 
 };
@@ -69,14 +66,24 @@ const ChessPlayerComponent: React.FC<IProps> = ({ username }) => {
         getData();
     }, [username]);
 
-    if (state.status === 'loading') {
-        return <LoadingComponent />;
-    }
-    if (state.status === 'error') {
-        return <ErrorComponent username={username} />;
-    }
-
-    return <SuccessComponent {...state.player} />;
+    const sectionClassName = state.status === 'success' ? 'chess-player-card' : 'chess-player-card chess-centered'; 
+    
+    return (
+        <section className={sectionClassName}>
+            {
+                state.status === 'loading' &&
+                <LoadingComponent />
+            }
+            {
+                state.status === 'error' &&
+                <ErrorComponent username={username} />
+            }
+            {
+                state.status === 'success' &&
+                <SuccessComponent {...state.player} />
+            }
+        </section>
+    );
 };
 
 export default ChessPlayerComponent;

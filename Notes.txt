@@ -42,3 +42,10 @@ I would say, designing the simple card structure to show the player.
 How about ripping off say a common playing card design?
 
 Done, next!
+
+I'd say get the overall display right, atm you've just chucked them all on a page.
+
+Then look at getting React Query in there.
+
+Next I'd like to wrap all these into one parent component.
+

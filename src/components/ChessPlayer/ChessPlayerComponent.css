@@ -22,6 +22,10 @@
     flex-direction: column;
 }
 
+.chess-panel .chess-player-card {
+    display: inline-flex;
+}
+
 .chess-centered {
     justify-content: center;
 }
