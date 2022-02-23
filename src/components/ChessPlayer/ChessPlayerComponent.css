@@ -24,6 +24,8 @@
 
 .chess-panel .chess-player-card {
     display: inline-flex;
+    vertical-align: top;
+    margin: 5px;
 }
 
 .chess-centered {
