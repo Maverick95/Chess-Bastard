@@ -2,50 +2,101 @@ So, what first then?
 
 I guess at first I would like to see what API calls I can make.
 
-The initial aim is to see whether I can detect, "is player currently playing?"
+Now as well as last login, is to see whether I can detect, "is player currently playing?"
 
-Also maybe fetch certain details?
+Is player currently in game?
+Is player logged in?
+Then last login.
 
-Lets see the API calls?
+Is player currently in game?
 
-Images are 200 x 200 pixels, this should be standard.
 
-So what I would like to do, as a first exercise, is to see whether you can keep a list of
-players' names in a JSON file somewhere, parse this, and for each user, create a separate
-grid-tab showing key details for the user.
+https://www.chess.com/news/view/published-data-api
 
-The last login time is not shown in time but in a useful format,
-either
-X minutes ago Green
-X hours ago Orange / yellow
-X days ago Grey
-whichever is the minimum that fits
+https://api.chess.com/pub/player/{username}/is-online
 
-So best get started with the JSON? Or with the links?
+Query for is-online no longer works.
 
-I would say the links.
+Instead I would investigate the query for current games.
+I'd like to know whether somebody is currently playing a timed game.
+And then display -
 
-So begin with just a simple component, username prop
+a) bullet if playing bullet,
+b) blitz if playing blitz,
+c) ...,
+d) o/w last login
 
-Initially component will just have a set state of Loading.
+So how can we do this?
 
-Yeah I remember this they use a reducer with a state of LOADING.
+Looks like this endpoint,
 
-Since these are 200 x 200, draw up a default img to use.
+https://api.chess.com/pub/player/{username}/games
 
-I'd like to design a simple loading component.
+Dude there is NO useful data!
 
-What is the next step here?
+https://api.chess.com/pub/player/nickemmerson/games/2022/03
 
-I would say, designing the simple card structure to show the player.
+Will have to use the monthly archives for finished games.
 
-How about ripping off say a common playing card design?
+I get the feeling that you're exhausting this idea.
 
-Done, next!
+Okay, so I would like to keep a track of the recent LIVE games that a player has finished.
 
-I'd say get the overall display right, atm you've just chucked them all on a page.
+This is trickier than you thought.
 
-Then look at getting React Query in there.
+How recent is up to you (maybe a slider of some sort?)
 
-Next I'd like to wrap all these into one parent component.
+And the result is, from the most recent last game within this time limit,
 
+a) did they win?
+b) did both/them/opponent/neither lose their queen?
+
+And display a picture to show this.
+
+And then after this I would put a pin in this task.
+
+First think about what API calls you are going to need.
+
+Because realistically, based on time, you may need multiple months.
+
+
+1) Create endpoint to retrieve data.
+b) Determine endpoints to hit.
+
+Arguments to endpoint function -
+
+a) player name,
+b) time to move back in seconds.
+
+a) Intended format of data (could involve transformation)
+
+Will this endpoint give me what I need?
+
+Data is there BUT a massive amount of work could be required.
+
+Might be easier just to report on -
+
+win / loss, with the player's name displayed in a particular format
+
+This will replace the "last seen" text in the box.
+
+Also display using the particular type of game played.
+
+Start by just displaying "Recently played!" in text, to show the API call is working.
+
+
+filter based on
+rules = "chess"
+end_time >= boundary defined by time input
+time_class in (bullet, blitz, rapid)
+
+require
+time_class
+time_control
+
+need to check the "white" and "black" objects, for the username of the player
+code values will be important
+transform these into -
+a) colour used,
+b) opponent name,
+c) result
