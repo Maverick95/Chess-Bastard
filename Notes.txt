@@ -100,3 +100,7 @@ transform these into -
 a) colour used,
 b) opponent name,
 c) result
+
+First get the images displayed.
+
+

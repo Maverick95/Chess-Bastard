@@ -30,6 +30,8 @@ const ErrorComponent: React.FC<IProps> = ({ username }) => (
 
 const SuccessComponent: React.FC<Player> = ({ username, avatar, lastOnline, lastLiveGame }) => {
 
+
+
     avatar = avatar ?? "./assets/default_player.jpg";
     const { difference } = getDateTimeDifferenceDescription(lastOnline);
 
@@ -45,7 +47,13 @@ const SuccessComponent: React.FC<Player> = ({ username, avatar, lastOnline, last
                 {
                     lastLiveGame ?
                     (
-                        <div>live game found</div>
+                        <>
+                        <img {...{
+                            width: 100, height: 100,
+                            src: `./assets/${lastLiveGame.timeClass}.png`,
+                            alt: `Last Live Game played was type ${lastLiveGame.timeClass}`,
+                        } } />
+                        </>
                     ) :
                     (
                         <>
@@ -62,7 +70,7 @@ const SuccessComponent: React.FC<Player> = ({ username, avatar, lastOnline, last
 
 const ChessPlayerComponent: React.FC<IProps> = ({ username }) => {
 
-    const lastLiveGameSeconds = 60 * 60 * 12;
+    const lastLiveGameSeconds = 60 * 30;
 
     const {
         isError: isErrorPlayer,
@@ -80,6 +88,7 @@ const ChessPlayerComponent: React.FC<IProps> = ({ username }) => {
         `query-chess-last-live-game-${username}`,
         () => GetLastLiveGameService(username, lastLiveGameSeconds),
         {
+            refetchInterval: 1000 * 30,
             refetchOnWindowFocus: false,
             enabled: isSuccessPlayer,
         });
