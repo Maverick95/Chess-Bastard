@@ -29,5 +29,12 @@ b) Flashing animation
 
 
 
+win
+
+agreed
+repetition
+stalemate
+insufficient
+abandoned
 
 
