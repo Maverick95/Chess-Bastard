@@ -1,24 +1,8 @@
-So, what first then?
-
-I guess at first I would like to see what API calls I can make.
-
-Now as well as last login, is to see whether I can detect, "is player currently playing?"
-
-Is player currently in game?
-Is player logged in?
-Then last login.
-
-Is player currently in game?
-
 
 https://www.chess.com/news/view/published-data-api
 
-https://api.chess.com/pub/player/{username}/is-online
-
-Query for is-online no longer works.
-
-Instead I would investigate the query for current games.
-I'd like to know whether somebody is currently playing a timed game.
+I would investigate the query for current games.
+I'd like to know whether somebody played a time game within a recent limit.
 And then display -
 
 a) bullet if playing bullet,
@@ -26,25 +10,7 @@ b) blitz if playing blitz,
 c) ...,
 d) o/w last login
 
-So how can we do this?
-
-Looks like this endpoint,
-
-https://api.chess.com/pub/player/{username}/games
-
-Dude there is NO useful data!
-
 https://api.chess.com/pub/player/nickemmerson/games/2022/03
-
-Will have to use the monthly archives for finished games.
-
-I get the feeling that you're exhausting this idea.
-
-Okay, so I would like to keep a track of the recent LIVE games that a player has finished.
-
-This is trickier than you thought.
-
-How recent is up to you (maybe a slider of some sort?)
 
 And the result is, from the most recent last game within this time limit,
 
@@ -55,52 +21,13 @@ And display a picture to show this.
 
 And then after this I would put a pin in this task.
 
-First think about what API calls you are going to need.
+Flashing images will show recent game type along with win/loss.
 
-Because realistically, based on time, you may need multiple months.
-
-
-1) Create endpoint to retrieve data.
-b) Determine endpoints to hit.
-
-Arguments to endpoint function -
-
-a) player name,
-b) time to move back in seconds.
-
-a) Intended format of data (could involve transformation)
-
-Will this endpoint give me what I need?
-
-Data is there BUT a massive amount of work could be required.
-
-Might be easier just to report on -
-
-win / loss, with the player's name displayed in a particular format
-
-This will replace the "last seen" text in the box.
-
-Also display using the particular type of game played.
-
-Start by just displaying "Recently played!" in text, to show the API call is working.
+a) Better images
+b) Flashing animation
 
 
-filter based on
-rules = "chess"
-end_time >= boundary defined by time input
-time_class in (bullet, blitz, rapid)
 
-require
-time_class
-time_control
 
-need to check the "white" and "black" objects, for the username of the player
-code values will be important
-transform these into -
-a) colour used,
-b) opponent name,
-c) result
-
-First get the images displayed.
 
 
