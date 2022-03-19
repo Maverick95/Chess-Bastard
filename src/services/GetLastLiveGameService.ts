@@ -15,6 +15,7 @@ const GetLastLiveGameYearMonth = (username: string, year: number, month: number,
             (a, b) => b.end_time - a.end_time
         ).map(value => (
             {
+                uuid: value.uuid,
                 timeClass: value.time_class,
                 time: parseInt(value.time_control),
                 player: username,
