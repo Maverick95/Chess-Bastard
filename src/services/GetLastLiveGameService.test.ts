@@ -28,6 +28,7 @@ describe('GetLastLiveGameService', () => {
             const data: { [url: string]: any[] } = {
                 'https://api.chess.com/pub/player/NickEmmerson/games/2022/03': [
                     {
+                        uuid: 'b4f69510-da56-498b-bde1-84b52601b714',
                         rules: 'chess',
                         end_time: Math.floor(currentDate.getTime() / 1000) - 40,
                         time_class: 'bullet',
@@ -42,6 +43,7 @@ describe('GetLastLiveGameService', () => {
                         }
                     },
                     {
+                        uuid: '952d65c7-cfb6-4668-838f-db44bdb6e792',
                         rules: 'chess',
                         end_time: Math.floor(currentDate.getTime() / 1000) - 30,
                         time_class: 'blitz',
@@ -58,6 +60,7 @@ describe('GetLastLiveGameService', () => {
                 ]
             };
             const expected: Game = {
+                uuid: '952d65c7-cfb6-4668-838f-db44bdb6e792',
                 timeClass: 'blitz',
                 time: 300,
                 player: 'NickEmmerson',
@@ -83,6 +86,7 @@ describe('GetLastLiveGameService', () => {
             const data: { [url: string]: any[] } = {
                 'https://api.chess.com/pub/player/NickEmmerson/games/2022/03': [
                     {
+                        uuid: 'b4f69510-da56-498b-bde1-84b52601b714',
                         rules: 'chess',
                         end_time: Math.floor(currentDate.getTime() / 1000) - 40,
                         time_class: 'bullet',
@@ -97,6 +101,7 @@ describe('GetLastLiveGameService', () => {
                         }
                     },
                     {
+                        uuid: '952d65c7-cfb6-4668-838f-db44bdb6e792',
                         rules: 'chess',
                         end_time: Math.floor(currentDate.getTime() / 1000) - 30,
                         time_class: 'blitz',
@@ -111,6 +116,7 @@ describe('GetLastLiveGameService', () => {
                         }
                     },
                     {
+                        uuid: '9f175a02-0da6-452e-9d9d-eda142b01c79',
                         rules: 'bughouse',
                         end_time: Math.floor(currentDate.getTime() / 1000) - 18,
                         time_class: 'bullet',
@@ -125,6 +131,7 @@ describe('GetLastLiveGameService', () => {
                         }
                     },
                     {
+                        uuid: 'd639e6a1-c1e4-4398-804d-c37cb484070c',
                         rules: 'kingofthehill',
                         end_time: Math.floor(currentDate.getTime() / 1000) - 15,
                         time_class: 'bullet',
@@ -139,6 +146,7 @@ describe('GetLastLiveGameService', () => {
                         }
                     },
                     {
+                        uuid: 'c4d1bb53-af60-4cbb-9e54-8e28a0592acf',
                         rules: 'chess',
                         end_time: Math.floor(currentDate.getTime() / 1000) - 19,
                         time_class: 'daily',
@@ -155,6 +163,7 @@ describe('GetLastLiveGameService', () => {
                 ]
             };
             const expected: Game = {
+                uuid: '952d65c7-cfb6-4668-838f-db44bdb6e792',
                 timeClass: 'blitz',
                 time: 300,
                 player: 'NickEmmerson',
@@ -180,6 +189,7 @@ describe('GetLastLiveGameService', () => {
             const data: { [url: string]: any[] } = {
                 'https://api.chess.com/pub/player/NickEmmerson/games/2022/03': [
                     {
+                        uuid: 'b4f69510-da56-498b-bde1-84b52601b714',
                         rules: 'chess',
                         end_time: Math.floor(currentDate.getTime() / 1000) - 65,
                         time_class: 'bullet',
@@ -194,6 +204,7 @@ describe('GetLastLiveGameService', () => {
                         }
                     },
                     {
+                        uuid: '952d65c7-cfb6-4668-838f-db44bdb6e792',
                         rules: 'chess',
                         end_time: Math.floor(currentDate.getTime() / 1000) - 80,
                         time_class: 'blitz',
@@ -234,6 +245,7 @@ describe('GetLastLiveGameService', () => {
             const data: { [url: string]: any[] } = {
                 'https://api.chess.com/pub/player/NickEmmerson/games/2022/03': [
                     {
+                        uuid: 'b4f69510-da56-498b-bde1-84b52601b714',
                         rules: 'chess',
                         end_time: Math.floor(monthStartDate.getTime() / 1000),
                         time_class: 'bullet',
@@ -250,6 +262,7 @@ describe('GetLastLiveGameService', () => {
                 ],
                 'https://api.chess.com/pub/player/NickEmmerson/games/2022/02': [
                     {
+                        uuid: '952d65c7-cfb6-4668-838f-db44bdb6e792',
                         rules: 'chess',
                         end_time: Math.floor(monthStartDate.getTime() / 1000) - 30,
                         time_class: 'bullet',
@@ -267,6 +280,7 @@ describe('GetLastLiveGameService', () => {
 
             };
             const expected: Game = {
+                uuid: 'b4f69510-da56-498b-bde1-84b52601b714',
                 timeClass: 'bullet',
                 time: 60,
                 player: 'NickEmmerson',
@@ -294,6 +308,7 @@ describe('GetLastLiveGameService', () => {
                   
                 'https://api.chess.com/pub/player/NickEmmerson/games/2022/02': [
                     {
+                        uuid: 'b4f69510-da56-498b-bde1-84b52601b714',
                         rules: 'chess',
                         end_time: Math.floor(monthStartDate.getTime() / 1000) - 30,
                         time_class: 'bullet',
@@ -308,6 +323,7 @@ describe('GetLastLiveGameService', () => {
                         }
                     },
                     {
+                        uuid: '952d65c7-cfb6-4668-838f-db44bdb6e792',
                         rules: 'chess',
                         end_time: Math.floor(monthStartDate.getTime() / 1000) - 10,
                         time_class: 'blitz',
@@ -324,6 +340,7 @@ describe('GetLastLiveGameService', () => {
                 ],
             };
             const expected: Game = {
+                uuid: '952d65c7-cfb6-4668-838f-db44bdb6e792',
                 timeClass: 'blitz',
                 time: 300,
                 player: 'NickEmmerson',
@@ -351,6 +368,7 @@ describe('GetLastLiveGameService', () => {
                   
                 'https://api.chess.com/pub/player/NickEmmerson/games/2022/02': [
                     {
+                        uuid: 'b4f69510-da56-498b-bde1-84b52601b714',
                         rules: 'chess',
                         end_time: Math.floor(monthStartDate.getTime() / 1000) - (60 * 60 * 24) - 50,
                         time_class: 'bullet',
@@ -365,6 +383,7 @@ describe('GetLastLiveGameService', () => {
                         }
                     },
                     {
+                        uuid: '952d65c7-cfb6-4668-838f-db44bdb6e792',
                         rules: 'chess',
                         end_time: Math.floor(monthStartDate.getTime() / 1000) - (60 * 60 * 24),
                         time_class: 'blitz',
