@@ -44,7 +44,7 @@ const SuccessComponent: React.FC<Player & IPropsChangeDetails> = ({ username, av
             </div>
             {
                 lastLiveGame ?
-                    <LastLiveGamePanelComponent {...{...lastLiveGame, changeDetails}} key={lastLiveGame.uuid} />
+                    <LastLiveGamePanelComponent {...{ ...lastLiveGame, changeDetails }} key={lastLiveGame.uuid} />
                     :
                     <div className="chess-player-content vertical">
                         <div>last seen</div>
@@ -71,15 +71,15 @@ const LastLiveGamePanelComponent: React.FC<Game & IPropsChangeDetails> = ({ time
     const resultClass = getResultClass(result);
 
     return (
-    <div className="chess-player-content horizontal" onClick={changeDetails}>
-        <div className={`chess-result-marker ${resultClass}`} />
-        <img {...{
-            width: 100, height: 100,
-            src: `./assets/${timeClass}.png`,
-            alt: `Last Live Game played was type ${timeClass}`,
-        }} />
-        <div className={`chess-result-marker ${resultClass}`} />
-    </div>
+        <div className="chess-player-content horizontal" onClick={changeDetails}>
+            <div className={`chess-result-marker ${resultClass}`} />
+            <img {...{
+                width: 100, height: 100,
+                src: `./assets/${timeClass}.png`,
+                alt: `Last Live Game played was type ${timeClass}`,
+            }} />
+            <div className={`chess-result-marker ${resultClass}`} />
+        </div>
     );
 
 };
@@ -130,25 +130,27 @@ const ChessPlayerComponent: React.FC<IPropsUsername> = ({ username }) => {
         player.lastLiveGame = lastLiveGame;
     }
 
-    const sectionClassName = isSuccessPlayer ? 'chess-player-card' : 'chess-player-card chess-centered';
+    const sectionClassNamePlayerPart1 = isSuccessPlayer ? 'chess-player-card' : 'chess-player-card chess-centered';
+    const sectionClassNamePlayerPart2 = details === ChessPlayerDisplayType.DISPLAY_PLAYER ? 'chess-player-card-active' : 'chess-player-card-last-active';
+    const sectionClassNamePlayer = `${sectionClassNamePlayerPart1} ${sectionClassNamePlayerPart2}`;
 
+    const sectionClassNameLastLiveGamePart1 = 'chess-player-card';
+    const sectionClassNameLastLiveGamePart2 = details === ChessPlayerDisplayType.DISPLAY_RECENT_GAME ? 'chess-player-card-active' : 'chess-player-card-last-active';
+    const sectionClassNameLastLiveGame = `${sectionClassNameLastLiveGamePart1} ${sectionClassNameLastLiveGamePart2}`;
+    
     return (
-        <section className={sectionClassName}>
-            {
-                details === ChessPlayerDisplayType.DISPLAY_PLAYER &&
-                <>
+        <div className="chess-player">
+            <div className="chess-player-pinned">
+                <section id={`chess-player-card-${username}`} className={sectionClassNamePlayer}>
                     {isLoadingPlayer && <LoadingComponent />}
-                    {isErrorPlayer && <ErrorComponent username={username} />}
-                    {isSuccessPlayer && <SuccessComponent {...{...player, changeDetails}} />}
-                </>
-            }
-            {
-                details === ChessPlayerDisplayType.DISPLAY_RECENT_GAME &&
-                <>
-                    <LastLiveGameCardComponent {...{changeDetails}} />
-                </>
-            }
-        </section>
+                            {isErrorPlayer && <ErrorComponent username={username} />}
+                            {isSuccessPlayer && <SuccessComponent {...{ ...player, changeDetails }} />}
+                </section>
+                <section id={`chess-last-live-game-card-${username}`} className={sectionClassNameLastLiveGame}>
+                    <LastLiveGameCardComponent {...{ changeDetails }} />
+                </section>
+            </div>
+        </div>
     );
 };
 
