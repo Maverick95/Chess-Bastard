@@ -83,3 +83,15 @@ c) piece being moved, is this a queen? if so, update the relevant position
 d) if not, is it a pawn being promoted to a queen? if so, update the queen count,
 add in new queen position
 
+26/03
+Summarize what you want to happen :
+a) 2nd side to cards that contain more specific details of recent game.
+b) Accessible when user has recent game.
+c) When this happens, you can click the card to make the flip happen.
+d) When you switch to the other side, queries stop updating, until you flip back.
+
+How to make this happen?
+
+State level variables on ChessPlayerComponent to indicate the side.
+Set up component to render other blank side if state changes.
+

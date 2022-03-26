@@ -1,5 +1,5 @@
 import React from 'react';
-import ChessPlayerComponent from '../ChessPlayer/ChessPlayerComponent';
+import ChessPlayerComponent from 'components/ChessPlayer/ChessPlayerComponent';
 import { QueryClient, QueryClientProvider } from 'react-query'
 
 const users: string[] = [
