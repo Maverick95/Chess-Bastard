@@ -8,8 +8,12 @@ import GetLastLiveGameService from 'services/GetLastLiveGameService';
 import Game from 'models/Game';
 import ChessPlayerDisplayType from 'models/ChessPlayerDisplayType';
 
-interface IProps {
+interface IPropsUsername {
     username: string;
+}
+
+interface IPropsChangeDetails {
+    changeDetails: () => void;
 }
 
 const LoadingComponent: React.FC = () => (
@@ -18,14 +22,14 @@ const LoadingComponent: React.FC = () => (
     </div>
 );
 
-const ErrorComponent: React.FC<IProps> = ({ username }) => (
+const ErrorComponent: React.FC<IPropsUsername> = ({ username }) => (
     <>
         <div>error loading</div>
         <div className="chess-detail-standout">{username}</div>
     </>
 );
 
-const SuccessComponent: React.FC<Player> = ({ username, avatar, lastOnline, lastLiveGame }) => {
+const SuccessComponent: React.FC<Player & IPropsChangeDetails> = ({ username, avatar, lastOnline, lastLiveGame, changeDetails }) => {
 
     avatar = avatar ?? "./assets/default_player.jpg";
     const { difference } = getDateTimeDifferenceDescription(lastOnline);
@@ -40,7 +44,7 @@ const SuccessComponent: React.FC<Player> = ({ username, avatar, lastOnline, last
             </div>
             {
                 lastLiveGame ?
-                    <LastLiveGamePanelComponent {...lastLiveGame} key={lastLiveGame.uuid} />
+                    <LastLiveGamePanelComponent {...{...lastLiveGame, changeDetails}} key={lastLiveGame.uuid} />
                     :
                     <div className="chess-player-content vertical">
                         <div>last seen</div>
@@ -62,12 +66,12 @@ const getResultClass = (result: string): string => {
     return 'lose';
 };
 
-const LastLiveGamePanelComponent: React.FC<Game> = ({ timeClass, result }) => {
+const LastLiveGamePanelComponent: React.FC<Game & IPropsChangeDetails> = ({ timeClass, result, changeDetails }) => {
 
     const resultClass = getResultClass(result);
 
     return (
-    <div className="chess-player-content horizontal">
+    <div className="chess-player-content horizontal" onClick={changeDetails}>
         <div className={`chess-result-marker ${resultClass}`} />
         <img {...{
             width: 100, height: 100,
@@ -80,11 +84,26 @@ const LastLiveGamePanelComponent: React.FC<Game> = ({ timeClass, result }) => {
 
 };
 
-const ChessPlayerComponent: React.FC<IProps> = ({ username }) => {
+const LastLiveGameCardComponent: React.FC<IPropsChangeDetails> = ({ changeDetails }) => (
+    <>
+        <div onClick={changeDetails}>This is a test.</div>
+    </>
+);
+
+const ChessPlayerComponent: React.FC<IPropsUsername> = ({ username }) => {
 
     const lastLiveGameSeconds = 60 * 60;
 
-    //const [details, setDetails] = useState
+    const [details, setDetails] = useState<ChessPlayerDisplayType>(ChessPlayerDisplayType.DISPLAY_PLAYER);
+
+    const changeDetails = () => {
+        if (details === ChessPlayerDisplayType.DISPLAY_PLAYER) {
+            setDetails(ChessPlayerDisplayType.DISPLAY_RECENT_GAME);
+        }
+        else if (details === ChessPlayerDisplayType.DISPLAY_RECENT_GAME) {
+            setDetails(ChessPlayerDisplayType.DISPLAY_PLAYER);
+        }
+    };
 
     const {
         isError: isErrorPlayer,
@@ -115,9 +134,20 @@ const ChessPlayerComponent: React.FC<IProps> = ({ username }) => {
 
     return (
         <section className={sectionClassName}>
-            {isLoadingPlayer && <LoadingComponent />}
-            {isErrorPlayer && <ErrorComponent username={username} />}
-            {isSuccessPlayer && <SuccessComponent {...player} />}
+            {
+                details === ChessPlayerDisplayType.DISPLAY_PLAYER &&
+                <>
+                    {isLoadingPlayer && <LoadingComponent />}
+                    {isErrorPlayer && <ErrorComponent username={username} />}
+                    {isSuccessPlayer && <SuccessComponent {...{...player, changeDetails}} />}
+                </>
+            }
+            {
+                details === ChessPlayerDisplayType.DISPLAY_RECENT_GAME &&
+                <>
+                    <LastLiveGameCardComponent {...{changeDetails}} />
+                </>
+            }
         </section>
     );
 };
