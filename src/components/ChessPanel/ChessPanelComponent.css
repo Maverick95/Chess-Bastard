@@ -4,6 +4,7 @@
     --chess-color-bg: rgb(119,148,55);
     --chess-color-upleft: rgb(235,235,208);
     --chess-color-downright: rgb(220,190,190);
+    --chess-light-border: rgb(118, 118, 118);
 }
 
 .chess-panel {
@@ -19,6 +20,34 @@
     display: inline-flex;
     vertical-align: top;
     margin: 5px;
+}
+
+.chess-time-selector {
+    display: flex;
+    gap: var(--chess-player-card-border);
+    padding: var(--chess-player-card-border);
+    background-color: var(--chess-color-downright);
+    border: 1px solid var(--chess-light-border);
+    border-radius: var(--chess-player-card-border);
+}
+
+.chess-time-selector input, .chess-time-selector select {
+    font-family: 'Copperplate Gothic';
+    font-size: 36px;
+    font-weight: bold;
+    text-transform: capitalize;
+    background-color: var(--chess-color-upleft);
+    border: 1px solid var(--chess-light-border);
+    border-radius: var(--chess-player-card-border);
+    padding: 0 15px;
+}
+
+.chess-time-selector span {
+    font-family: 'Copperplate Gothic';
+    font-size: 18px;
+    text-transform: capitalize;
+    padding: 0 15px;
+    align-self: center;
 }
 
 .chess-panel .chess-time-selector {

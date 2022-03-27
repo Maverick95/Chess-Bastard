@@ -71,6 +71,7 @@ const ChessPanelComponent: React.FC = () => {
                         <ChessPlayerComponent {...{ username, lastLiveGameSeconds }} key={`user-${username}`} />)
                 }
                 <div className="chess-time-selector">
+                    <span>look for games within last</span>
                     <input type="number" {...range} value={value} onChange={(event) => { setValue(parseInt(event.target.value)); }} />
                     <select onChange={(event) => { setUnit(event.target.value as any); }}>
                         {Object.keys(ranges).map((value) => <option value={value}>{value}</option>)}
