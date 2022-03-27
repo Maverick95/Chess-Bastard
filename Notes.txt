@@ -112,3 +112,4 @@ Inactive card		top = 0, left = 50%, width = 0%, height = 100%,	transition-props 
 
 
 TODO - fix test files resolutions
+TODO - fix type resolution

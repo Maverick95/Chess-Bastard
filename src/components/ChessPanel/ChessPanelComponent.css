@@ -6,6 +6,10 @@
     --chess-color-downright: rgb(220,190,190);
 }
 
+.chess-panel {
+    position: relative;
+}
+
 .chess-player {
     width: 350px;
     height: 500px;
@@ -15,6 +19,12 @@
     display: inline-flex;
     vertical-align: top;
     margin: 5px;
+}
+
+.chess-panel .chess-time-selector {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
 }
 
 .chess-player-pinned {
@@ -144,4 +154,8 @@
 .chess-result-marker.lose::before {
     content: "\2716";
     color: #880000;
+}
+
+.chess-player-flip {
+    cursor: pointer;
 }

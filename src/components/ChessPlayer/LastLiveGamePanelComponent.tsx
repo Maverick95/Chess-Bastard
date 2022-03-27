@@ -22,7 +22,7 @@ const LastLiveGamePanelComponent: React.FC<IProps> = ({ lastLiveGame, changeDeta
   const resultClass = getResultClass(result);
 
   return (
-      <div className="chess-player-content horizontal" onClick={changeDetails}>
+      <div className="chess-player-content horizontal chess-player-flip" onClick={changeDetails}>
           <div className={`chess-result-marker ${resultClass}`} />
           <img {...{
               width: 100, height: 100,
