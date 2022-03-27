@@ -38,26 +38,40 @@ const GetLastLiveGameService = async (username: string, seconds: number): Promis
 
     const currentDate = getCurrentDateTime();
     const pastDate = new Date(currentDate.getTime() - (seconds * 1000));
-    const sameMonth = pastDate.getUTCMonth() === currentDate.getUTCMonth() 
+    const sameMonth = pastDate.getUTCMonth() === currentDate.getUTCMonth();
     
-    let filterDate = sameMonth ? pastDate : new Date(currentDate.getUTCFullYear(), currentDate.getUTCMonth());
-    
-    const game: Game = await GetLastLiveGameYearMonth(
-        username,
-        filterDate.getUTCFullYear(),
-        1 + filterDate.getUTCMonth(),
-        Math.floor(filterDate.getTime() / 1000));
+    if (sameMonth) {
+        return await GetLastLiveGameYearMonth(
+            username,
+            currentDate.getUTCFullYear(),
+            1 + currentDate.getUTCMonth(),
+            Math.floor(pastDate.getTime() / 1000));
+    }
 
-    filterDate = pastDate;
+    let game: Game = null;
+    let loopDateYM = (12 * currentDate.getUTCFullYear()) + currentDate.getUTCMonth();
+    const pastDateYM = (12 * pastDate.getUTCFullYear()) + pastDate.getUTCMonth();
 
-    return game ??
-        (sameMonth ? null :
-            await GetLastLiveGameYearMonth(
-                username,
-                filterDate.getUTCFullYear(),
-                1 + filterDate.getUTCMonth(),
-                Math.floor(filterDate.getTime() / 1000))
-        );
+    while (loopDateYM >= pastDateYM) {
+        const
+            loopYear = Math.floor(loopDateYM / 12),
+            loopMonth = loopDateYM % 12,
+            boundaryDate = loopDateYM > pastDateYM ? new Date(loopYear, loopMonth) : pastDate;
+                
+        game = await GetLastLiveGameYearMonth(
+            username,
+            loopYear,
+            1 + loopMonth,
+            Math.floor(boundaryDate.getTime() / 1000));
+
+        if (game !== null) {
+            break;
+        }
+
+        loopDateYM--;
+    }
+
+    return game;
 };
 
 export default GetLastLiveGameService;
