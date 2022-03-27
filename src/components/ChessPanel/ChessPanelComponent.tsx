@@ -57,7 +57,7 @@ const getUnitValueInSeconds = (unit: Unit, value: number): number => {
 const ChessPanelComponent: React.FC = () => {
 
     const [unit, setUnit] = useState<Unit>('seconds');
-    const [value, setValue] = useState<number>(1);
+    const [value, setValue] = useState<number>(59);
 
     useEffect(() => {
         const range = ranges[unit];
