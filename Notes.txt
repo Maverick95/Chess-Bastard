@@ -25,79 +25,55 @@ And then after this I would put a pin in this task.
 
 
 
+turn: 'w' | 'b'
+moveNumber: number
 
 notation.
-	check: string
-	col: string
-	fig: string
-	notation: string
-	promotion: string
-	row: string
-	strike: string
-turn: 'w' | 'b'
+	check: string				# -> checkmate, + -> check
+	col: string					a to h	(file)
+	fig: string					the piece, blank (pawn), N (knight), B (bishop), Q (queen), K (king), R (rook)
+	notation: string		needed?
+	promotion: string		=Q means queen promotion
+	row: string					1 to 8	(rank)	
+	strike: string			x means piece taken
+
+special case: castling, notation is string "O-O" | "O-O-O", check property exists
+
+special case: "Qh5-f3+" is the notation where double-qualification is required
+For now, discard this case and throw exception!
+
+turn: white or black (enum)
+moveNumber: we don't need (just for ordering)
+col: turn a-h into 0-7
+row: turn 1-8 into 0-7
+check: true or false
+notation: required for validation
+promtion: enum for piece
+strike: true or false
+disc: row or column, 0-7
 
 
-did each player lose their queen???
+pseudo-code!
 
-{
-  white : { lostQueen: boolean }
-  black : { lostQueen: boolean }
-}
+a) setup initial data structures
 
-keep track of where each player's queen is
+	1) map of the board indicating which pieces on which squares (lookup)
+	2) positions of pieces grouped by colour and type, plus initial / gained / lost
 
-white starts with queen on d1, black on d8
 
-ALSO
+b) step through each move in order
+c) update all positions, remove/add pieces if required
 
-need to keep track of promotions to queen
 
-need to track where ALL of the queens are
 
-summarise with -
 
-queens initial - 1
-queens gained -
-queens lost -
 
-{
-  white: { queen: { initial, gained, lost } }
-}
 
-Pseudo-code :
 
-begin with
 
-{
-	white: { queen: { initial: 1, gained: 0, lost: 0, positions: [ 'd1' ] } }
-	black: { queen: { initial: 1, gained: 0, lost: 0, position: [ 'd8' ] } }
-}
 
-For each move (using white WLOG)
 
-a) if castling, ignore
-b) space being moved to, does black have queen there?
-	if so, remove queen, add to lost count
-c) piece being moved, is this a queen? if so, update the relevant position
-( this may be tricky to identify 
-d) if not, is it a pawn being promoted to a queen? if so, update the queen count,
-add in new queen position
 
-26/03
-Summarize what you want to happen :
-a) 2nd side to cards that contain more specific details of recent game.
-b) Accessible when user has recent game.
-c) When this happens, you can click the card to make the flip happen.
-d) When you switch to the other side, queries stop updating, until you flip back.
-
-How to make this happen?
-
-State level variables on ChessPlayerComponent to indicate the side.
-Set up component to render other blank side if state changes.
-
-How to simulate a card flip?
-
-Need to split into 2 very different card components.
 
 
 TODO - fix test files resolutions
