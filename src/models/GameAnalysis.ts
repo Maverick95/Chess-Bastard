@@ -1,8 +1,15 @@
-import Piece from './Piece';
-
 /*
  * the default GameAnalysis is the single source-of-truth for how a game begins
  */
+
+enum Piece {
+  PAWN,
+  ROOK,
+  KNIGHT,
+  BISHOP,
+  QUEEN,
+  KING
+};
 
 interface Position {
   row: number,
@@ -186,10 +193,15 @@ const createBoardAnalysis = (gameAnalysis: GameAnalysis): BoardAnalysis => {
 
 };
 
+const createDefaultBoardAnalysis = (): BoardAnalysis => createBoardAnalysis(createDefaultGameAnalysis());
+
 export {
+  Piece,
+  Position,
   GameAnalysis,
   PositionToIndex,
   IndexToPosition,
   createDefaultGameAnalysis,
+  createDefaultBoardAnalysis,
   createBoardAnalysis
 };
