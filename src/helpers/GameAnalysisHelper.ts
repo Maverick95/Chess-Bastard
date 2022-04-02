@@ -59,31 +59,31 @@ const checkMoveAgainstBoardAnalysis = (from: Position, move: Move, board: BoardA
                 if (move.player === 'white') {
                     if (move.strike) {
                         differences.push({ row: 1, col: -1 });
-                        differences.push({ row: 1, col:  1 });
+                        differences.push({ row: 1, col: 1 });
                     }
                     else if (from.row === 1) {
-                        if (board[PositionToIndex({row: 2, col: from.col})] === undefined) {
-                            differences.push({ row: 2, col:  0 });
+                        if (board[PositionToIndex({ row: 2, col: from.col })] === undefined) {
+                            differences.push({ row: 2, col: 0 });
                         }
-                        differences.push({ row: 1, col:  0 });
+                        differences.push({ row: 1, col: 0 });
                     }
                     else {
-                        differences.push({ row: 1, col:  0 });
+                        differences.push({ row: 1, col: 0 });
                     }
                 }
                 else {
                     if (move.strike) {
-                        differences.push({ row: -1, col: -1});
-                        differences.push({ row: -1, col:  1});
+                        differences.push({ row: -1, col: -1 });
+                        differences.push({ row: -1, col: 1 });
                     }
                     else if (from.row === 6) {
-                        if (board[PositionToIndex({row: 5, col: from.col})] === undefined) {
-                            differences.push({ row: -2, col:  0});
+                        if (board[PositionToIndex({ row: 5, col: from.col })] === undefined) {
+                            differences.push({ row: -2, col: 0 });
                         }
-                        differences.push({ row: -1, col:  0 });
+                        differences.push({ row: -1, col: 0 });
                     }
                     else {
-                        differences.push({ row: -1, col:  0 });
+                        differences.push({ row: -1, col: 0 });
                     }
                 }
                 const difference: Position = {
@@ -100,17 +100,19 @@ const checkMoveAgainstBoardAnalysis = (from: Position, move: Move, board: BoardA
                     row: Math.sign(move.to.row - from.row),
                     col: Math.sign(move.to.col - from.col),
                 };
-                if ((step.row === 0) !== (step.col !== 0)) {
-                    from.row += step.row;
-                    from.col += step.col;
+                if ((step.row === 0) === (step.col !== 0)) {
+                    const fromLp: Position = {
+                        row: from.row + step.row,
+                        col: from.col + step.col,
+                    };
                     let square_occupied = false;
-                    while (from.row !== move.to.row || from.col !== move.to.col) {
-                        if (board[PositionToIndex(from)] !== undefined) {
+                    while (fromLp.row !== move.to.row || fromLp.col !== move.to.col) {
+                        if (board[PositionToIndex(fromLp)] !== undefined) {
                             square_occupied = true;
                             break;
                         }
-                        from.row += step.row;
-                        from.col += step.col;
+                        fromLp.row += step.row;
+                        fromLp.col += step.col;
                     }
                     result = !square_occupied;
                 }
@@ -122,12 +124,12 @@ const checkMoveAgainstBoardAnalysis = (from: Position, move: Move, board: BoardA
                 const differences: Position[] = [
                     { row: -2, col: -1 },
                     { row: -1, col: -2 },
-                    { row:  1, col: -2 },
-                    { row:  2, col: -1 },
-                    { row:  2, col:  1 },
-                    { row:  1, col:  2 },
-                    { row: -1, col:  2 },
-                    { row: -2, col:  1 },
+                    { row: 1, col: -2 },
+                    { row: 2, col: -1 },
+                    { row: 2, col: 1 },
+                    { row: 1, col: 2 },
+                    { row: -1, col: 2 },
+                    { row: -2, col: 1 },
                 ];
                 const difference: Position = {
                     row: move.to.row - from.row,
@@ -148,16 +150,18 @@ const checkMoveAgainstBoardAnalysis = (from: Position, move: Move, board: BoardA
                         row: Math.sign(difference.row),
                         col: Math.sign(difference.col),
                     };
-                    from.row += step.row;
-                    from.col += step.col;
+                    const fromLp: Position = {
+                        row: from.row + step.row,
+                        col: from.col + step.col,
+                    };
                     let square_occupied = false;
-                    while (from.row !== move.to.row || from.col !== move.to.col) {
-                        if (board[PositionToIndex(from)] !== undefined) {
+                    while (fromLp.row !== move.to.row || fromLp.col !== move.to.col) {
+                        if (board[PositionToIndex(fromLp)] !== undefined) {
                             square_occupied = true;
                             break;
                         }
-                        from.row += step.row;
-                        from.col += step.col;
+                        fromLp.row += step.row;
+                        fromLp.col += step.col;
                     }
                     result = !square_occupied;
                 }
@@ -170,45 +174,27 @@ const checkMoveAgainstBoardAnalysis = (from: Position, move: Move, board: BoardA
                     row: move.to.row - from.row,
                     col: move.to.col - from.col,
                 };
-                if (((difference.row === 0) !== (difference.col !== 0)) ||
-                (Math.abs(difference.row) === Math.abs(difference.col))) {
+                if (((difference.row === 0) === (difference.col !== 0)) ||
+                    (Math.abs(difference.row) === Math.abs(difference.col))) {
                     const step: Position = {
                         row: Math.sign(difference.row),
                         col: Math.sign(difference.col),
                     };
-                    from.row += step.row;
-                    from.col += step.col;
+                    const fromLp: Position = {
+                        row: from.row + step.row,
+                        col: from.col + step.col,
+                    };
                     let square_occupied = false;
-                    while (from.row !== move.to.row || from.col !== move.to.col) {
-                        if (board[PositionToIndex(from)] !== undefined) {
+                    while (fromLp.row !== move.to.row || fromLp.col !== move.to.col) {
+                        if (board[PositionToIndex(fromLp)] !== undefined) {
                             square_occupied = true;
                             break;
                         }
-                        from.row += step.row;
-                        from.col += step.col;
+                        fromLp.row += step.row;
+                        fromLp.col += step.col;
                     }
                     result = !square_occupied;
                 }
-            }
-            break;
-
-        case Piece.KING:
-            {
-                const differences: Position[] = [
-                    { row: -1, col: -1 },
-                    { row: -1, col:  0 },
-                    { row: -1, col:  1 },
-                    { row:  0, col:  1 },
-                    { row:  1, col:  1 },
-                    { row:  1, col:  0 },
-                    { row:  1, col: -1 },
-                    { row:  0, col: -1 },
-                ];
-                const difference: Position = {
-                    row: move.to.row - from.row,
-                    col: move.to.col - from.col,
-                };
-                result = !differences.every(d => !(d.row === difference.row && d.col === difference.col));
             }
             break;
     }
@@ -230,28 +216,28 @@ const getGameAnalysisFromPgn = (pgn: string): GameAnalysis => {
                         if (player === 'white') {
                             moves.push({
                                 player: 'white',
-                                piece: Piece.KING,
-                                to: { row: 0, col: 6 },
+                                piece: Piece.ROOK,
+                                to: { row: 0, col: 5 },
                                 strike: false,
                             });
                             moves.push({
                                 player: 'white',
-                                piece: Piece.ROOK,
-                                to: { row: 0, col: 5 },
+                                piece: Piece.KING,
+                                to: { row: 0, col: 6 },
                                 strike: false,
                             });
                         }
                         else {
                             moves.push({
                                 player: 'black',
-                                piece: Piece.KING,
-                                to: { row: 7, col: 6 },
+                                piece: Piece.ROOK,
+                                to: { row: 7, col: 5 },
                                 strike: false,
                             });
                             moves.push({
                                 player: 'black',
-                                piece: Piece.ROOK,
-                                to: { row: 7, col: 5 },
+                                piece: Piece.KING,
+                                to: { row: 7, col: 6 },
                                 strike: false,
                             });
                         }
@@ -263,28 +249,28 @@ const getGameAnalysisFromPgn = (pgn: string): GameAnalysis => {
                         if (player === 'white') {
                             moves.push({
                                 player: 'white',
-                                piece: Piece.KING,
-                                to: { row: 0, col: 2 },
+                                piece: Piece.ROOK,
+                                to: { row: 0, col: 3 },
                                 strike: false,
                             });
                             moves.push({
                                 player: 'white',
-                                piece: Piece.ROOK,
-                                to: { row: 0, col: 3 },
+                                piece: Piece.KING,
+                                to: { row: 0, col: 2 },
                                 strike: false,
                             });
                         }
                         else {
                             moves.push({
                                 player: 'black',
-                                piece: Piece.KING,
-                                to: { row: 7, col: 2 },
+                                piece: Piece.ROOK,
+                                to: { row: 7, col: 3 },
                                 strike: false,
                             });
                             moves.push({
                                 player: 'black',
-                                piece: Piece.ROOK,
-                                to: { row: 7, col: 3 },
+                                piece: Piece.KING,
+                                to: { row: 7, col: 2 },
                                 strike: false,
                             });
                         }
@@ -334,17 +320,26 @@ const getGameAnalysisFromPgn = (pgn: string): GameAnalysis => {
         const active_player = game[move.player];
         const active_piece = active_player[move.piece];
         let active_positions = active_piece.positions;
-        const active_positions_checked = active_positions.filter(from =>
-            (!move.discType ||
-            (move.discType === 'row' && move.discIndex === from.row) ||
-            (move.discType === 'col' && move.discIndex === from.col)) &&
-            checkMoveAgainstBoardAnalysis(from, move, board));
 
-        if (active_positions_checked.length !== 1) {
-            throw new Error("Could not retrieve Game Analysis from PGN");
+        let active_from: Position = null;
+
+        if (move.piece === Piece.KING) {
+            active_from = active_positions[0];
+        }
+        else {
+            const active_positions_checked = active_positions.filter(from =>
+                (!move.discType ||
+                    (move.discType === 'row' && move.discIndex === from.row) ||
+                    (move.discType === 'col' && move.discIndex === from.col)) &&
+                checkMoveAgainstBoardAnalysis(from, move, board));
+            if (active_positions_checked.length === 1) {
+                active_from = active_positions_checked[0];
+            }
         }
 
-        const active_from = active_positions_checked[0];
+        if (active_from === null) {
+            throw new Error("Could not retrieve Game Analysis from PGN");
+        }
 
         if (move.strike) {
             const active_to_piece = board[PositionToIndex(move.to)].piece;
@@ -354,7 +349,7 @@ const getGameAnalysisFromPgn = (pgn: string): GameAnalysis => {
             inactive_piece.positions = inactive_piece.positions.filter(to =>
                 !(to.row === move.to.row && to.col === move.to.col));
             inactive_piece.lost++;
-            board[PositionToIndex(move.to)] = undefined;           
+            board[PositionToIndex(move.to)] = undefined;
         }
 
         board[PositionToIndex(active_from)] = undefined;
