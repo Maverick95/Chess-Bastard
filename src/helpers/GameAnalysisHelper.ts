@@ -212,6 +212,8 @@ const getGameAnalysisFromPgn = (pgn: string): GameAnalysis => {
             const player = move.turn === 'w' ? 'white' : 'black';
             switch (move.notation.notation) {
                 case 'O-O':
+                case 'O-O+':
+                case 'O-O#':
                     {
                         if (player === 'white') {
                             moves.push({
@@ -245,6 +247,8 @@ const getGameAnalysisFromPgn = (pgn: string): GameAnalysis => {
                     }
 
                 case 'O-O-O':
+                case 'O-O-O+':
+                case 'O-O-O#':
                     {
                         if (player === 'white') {
                             moves.push({
