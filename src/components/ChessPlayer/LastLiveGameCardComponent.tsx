@@ -25,7 +25,9 @@ const LastLiveGameCardComponent: React.FC<IProps> = ({ lastLiveGame, changeDetai
       <div className="chess-lastgame-grid" onClick={changeDetails}>
         <div className="chess-lastgame-header-white"></div>
         <div className="chess-lastgame-header-black"></div>
-        <div>Test</div>
+        <div className="chess-lastgame-main">
+          <div>Test</div>
+        </div>
       </div>
     );
   }
