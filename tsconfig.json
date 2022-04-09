@@ -3,6 +3,7 @@
     "baseUrl": "src",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "jsx": "react"
+    "jsx": "react",
+    "resolveJsonModule": true,
   }
 }

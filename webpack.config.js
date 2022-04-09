@@ -35,7 +35,7 @@ module.exports = {
                 {
                     from: 'src/assets/*.png',
                     to: path.resolve(__dirname, 'dist/assets/[name][ext]')
-                }
+                },
             ]
         })
     ],
