@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import Game from 'models/Game';
-import { GameAnalysis, Piece } from 'models/GameAnalysis';
+import { PieceAnalysis, GameAnalysis, Piece } from 'models/GameAnalysis';
 import getGameAnalysisFromPgn from 'helpers/GameAnalysisHelper';
 
 interface IProps {
@@ -8,17 +8,22 @@ interface IProps {
   changeDetails: () => void,
 }
 
-const getResultClass = (diff_white: number, diff_black: number, player: 'white' | 'black'): string => {
-  const diff_player = player === 'white' ? diff_white : diff_black;
-  const diff_opponent = player === 'white' ? diff_black : diff_white;
-  if (diff_player > diff_opponent) {
+const getResultClass = (count_white: number, count_black: number, player: 'white' | 'black'): string => {
+  const count_player = player === 'white' ? count_white : count_black;
+  const count_opponent = player === 'white' ? count_black : count_white;
+  if (count_player > count_opponent) {
       return 'chess-result-win';
   }
-  if (diff_player === diff_opponent) {
+  if (count_player === count_opponent) {
       return 'chess-result-draw';
   }
   return 'chess-result-lose';
 };
+
+const getPiecesRemaining = (piece: PieceAnalysis): number => {
+  const { initial, gained, lost } = piece;
+  return initial + gained - lost;
+}
 
 const LastLiveGameCardComponent: React.FC<IProps> = ({ lastLiveGame, changeDetails }) => {
 
@@ -42,29 +47,25 @@ const LastLiveGameCardComponent: React.FC<IProps> = ({ lastLiveGame, changeDetai
 
   if (gameAnalysis) {
     return (
-      <div className="chess-lastgame-grid" onClick={changeDetails}>
+      <div className="chess-lastgame-grid chess-player-flip" onClick={changeDetails}>
         <div className="chess-lastgame-header-white"></div>
         <div className="chess-lastgame-header-black"></div>
-        <div className="chess-lastgame-main">
+        <div className="chess-lastgame-main chess-header-text">
           {
             pieces.map(piece => {
-              const diff_white = gameAnalysis['white'][piece].gained - gameAnalysis['white'][piece].lost;
-              const diff_black = gameAnalysis['black'][piece].gained - gameAnalysis['black'][piece].lost;
-              const result_class = getResultClass(diff_white, diff_black, player);
+              const count_white = getPiecesRemaining(gameAnalysis['white'][piece]);
+              const count_black = getPiecesRemaining(gameAnalysis['black'][piece]);
+              const result_class = getResultClass(count_white, count_black, player);
 
               return (<>
                 <img width="70" height="75" src={`./assets/${player}_${piece}.png`} alt={`${player} ${piece}`} />
-                <span style={{verticalAlign: 'middle'}}>{diff_white}</span>
-                <span>{diff_black}</span>
+                <span>{count_white}</span>
+                <span>{count_black}</span>
                 <span className={result_class} />
               </>);
 
             })
           }
-
-
-
-
         </div>
       </div>
     );
