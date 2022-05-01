@@ -150,11 +150,11 @@
     flex-direction: row;
 }
 
-.chess-player-content.horizontal > * {
-    animation: 1s linear 0ms 4 alternate none running result-image-flashbulb;
+.chess-player-content.horizontal .chess-flashbulb {
+    animation: 1s linear 0ms 4 alternate none running flashbulb;
 }
 
-@keyframes result-image-flashbulb {
+@keyframes flashbulb {
     from {
         opacity: 1
     }
