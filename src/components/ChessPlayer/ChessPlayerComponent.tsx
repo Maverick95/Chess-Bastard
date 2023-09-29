@@ -1,4 +1,3 @@
-import './ChessPlayerComponent.css';
 import React, { useState } from 'react';
 import GetPlayerService from 'services/GetPlayerService';
 import { useQuery } from 'react-query';
@@ -9,18 +8,12 @@ import ErrorComponent from './ErrorComponent';
 import SuccessComponent from './SuccessComponent';
 import LastLiveGameCardComponent from './LastLiveGameCardComponent';
 
-interface IPropsUsername {
+interface IProps {
     username: string;
+    lastLiveGameSeconds: number;
 }
 
-interface IPropsChangeDetails {
-    changeDetails: () => void;
-}
-
-
-const ChessPlayerComponent: React.FC<IPropsUsername> = ({ username }) => {
-
-    const lastLiveGameSeconds = 60 * 60;
+const ChessPlayerComponent: React.FC<IProps> = ({ username, lastLiveGameSeconds }) => {
 
     const [details, setDetails] = useState<ChessPlayerDisplayType>(ChessPlayerDisplayType.DISPLAY_PLAYER);
 
