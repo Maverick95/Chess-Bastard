@@ -2,6 +2,8 @@ import React, { useMemo } from 'react';
 import Game from 'models/Game';
 import { PieceAnalysis, GameAnalysis, Piece } from 'models/GameAnalysis';
 import getGameAnalysisFromPgn from 'helpers/GameAnalysisHelper';
+import TooltipComponent from 'components/Tooltip/TooltipComponent';
+import 'components/Tooltip/TooltipComponent.css';
 
 interface IProps {
   lastLiveGame: Game,
@@ -45,9 +47,16 @@ const LastLiveGameCardComponent: React.FC<IProps> = ({ lastLiveGame, changeDetai
     }
   }, [pgn]);
 
+  const paragraphs = [
+    'Column 1 : the colour this player was assigned',
+    'Column 2 : how many white pieces left at game finish',
+    'Column 3 : how many black pieces left at game finish',
+  ];
+
   if (gameAnalysis) {
     return (
-      <div className="chess-lastgame-grid chess-player-flip" onClick={changeDetails}>
+      <div className="chess-lastgame-grid chess-player-flip chess-tooltip-container" onClick={changeDetails}>
+        <TooltipComponent paragraphs={paragraphs} />
         <div className="chess-lastgame-header-white"></div>
         <div className="chess-lastgame-header-black"></div>
         <div className="chess-lastgame-main chess-header-text">

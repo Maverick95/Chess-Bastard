@@ -49,7 +49,7 @@ const getUnitValueInSeconds = (unit: Unit, value: number): number => {
 
 const ChessPanelComponent: React.FC = () => {
 
-    const [unit, setUnit] = useState<Unit>('seconds');
+    const [unit, setUnit] = useState<Unit>('minutes');
     const [value, setValue] = useState<number>(59);
 
     useEffect(() => {
@@ -77,7 +77,11 @@ const ChessPanelComponent: React.FC = () => {
                     <span>look for games within last</span>
                     <input type="number" {...ranges[unit]} value={value} onChange={(event) => { setValue(parseInt(event.target.value)); }} />
                     <select onChange={(event) => { setUnit(event.target.value as any); }}>
-                        {Object.keys(ranges).map((value) => <option value={value}>{value}</option>)}
+                        {Object.keys(ranges).map((value) => 
+                            value === unit ? 
+                            <option value={value} selected>{value}</option> :
+                            <option value={value}>{value}</option>
+                        )}
                     </select>
                 </div>
             </div>
