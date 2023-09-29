@@ -42,6 +42,11 @@
     padding: 0 15px;
 }
 
+/* Fix weird Firefox bug, without this the input does a Jacob-Rees-Mogg-esque extension in size. */
+.chess-time-selector input {
+    max-width: 200px;
+}
+
 .chess-time-selector span {
     font-family: 'Copperplate Gothic';
     font-size: 18px;
@@ -146,10 +151,10 @@
 }
 
 .chess-player-content.horizontal > * {
-    animation: 1s linear 0ms 4 alternate none running flasher;
+    animation: 1s linear 0ms 4 alternate none running result-image-flashbulb;
 }
 
-@keyframes flasher {
+@keyframes result-image-flashbulb {
     from {
         opacity: 1
     }
