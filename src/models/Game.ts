@@ -1,4 +1,5 @@
 interface Game {
+    uuid: string,
     timeClass: "bullet" | "blitz" | "rapid",
     time: number,
     player: string,

@@ -108,11 +108,16 @@
 }
 
 .chess-result-marker.win::before {
-    content: "\2713";
-    color: green;
+    content: "\2714";
+    color: #008800;
+}
+
+.chess-result-marker.draw::before {
+    content: "\23AF";
+    color: #444444
 }
 
 .chess-result-marker.lose::before {
     content: "\2716";
-    color: red;
+    color: #880000;
 }

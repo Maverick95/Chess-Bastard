@@ -31,8 +31,6 @@ const ErrorComponent: React.FC<IProps> = ({ username }) => (
 
 const SuccessComponent: React.FC<Player> = ({ username, avatar, lastOnline, lastLiveGame }) => {
 
-
-
     avatar = avatar ?? "./assets/default_player.jpg";
     const { difference } = getDateTimeDifferenceDescription(lastOnline);
 
@@ -46,7 +44,7 @@ const SuccessComponent: React.FC<Player> = ({ username, avatar, lastOnline, last
             </div>
             {
                 lastLiveGame ?
-                    <LastLiveGamePanelComponent {...lastLiveGame} />
+                    <LastLiveGamePanelComponent {...lastLiveGame} key={lastLiveGame.uuid} />
                     :
                     <div className="chess-player-content vertical">
                         <div>last seen</div>
