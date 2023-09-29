@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import GetPlayerService from 'services/GetPlayerService';
 import { useQuery } from 'react-query';
 import GetLastLiveGameService from 'services/GetLastLiveGameService';
@@ -30,7 +30,7 @@ const ChessPlayerComponent: React.FC<IProps> = ({ username, lastLiveGameSeconds 
         isError: isErrorPlayer,
         isLoading: isLoadingPlayer,
         isSuccess: isSuccessPlayer,
-        data: player
+        data: dataPlayer
     } = useQuery(
         `query-chess-player-${username}`,
         () => GetPlayerService(username),
@@ -38,18 +38,27 @@ const ChessPlayerComponent: React.FC<IProps> = ({ username, lastLiveGameSeconds 
             refetchOnWindowFocus: false
         });
 
-    const { data: lastLiveGame } = useQuery(
-        `query-chess-last-live-game-${username}`,
+    const { data: dataLastLiveGame } = useQuery(
+        `query-chess-last-live-game-${username}-${lastLiveGameSeconds}`,
         () => GetLastLiveGameService(username, lastLiveGameSeconds),
         {
-            refetchInterval: 1000 * 30,
-            refetchOnWindowFocus: false,
             enabled: isSuccessPlayer,
+            refetchInterval: 1000 * 30,
+            refetchIntervalInBackground: true,
+            refetchOnWindowFocus: false,
+            keepPreviousData: true,
         });
 
-    if (player && lastLiveGame) {
-        player.lastLiveGame = lastLiveGame;
-    }
+    const player = useMemo(() => {
+        if (dataPlayer) {
+            const player_new = { ...dataPlayer };
+            if (dataLastLiveGame) {
+                player_new.lastLiveGame = dataLastLiveGame;
+            }
+            return player_new;
+        }
+        return null;
+    }, [dataPlayer, dataLastLiveGame]);
 
     const sectionClassNamePlayerPart1 = isSuccessPlayer ? 'chess-player-card' : 'chess-player-card chess-centered';
     const sectionClassNamePlayerPart2 = details === ChessPlayerDisplayType.DISPLAY_PLAYER ? 'chess-player-card-active' : 'chess-player-card-last-active';
