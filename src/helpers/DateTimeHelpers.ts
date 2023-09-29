@@ -1,5 +1,5 @@
 import getCurrentDateTime from './CurrentDateTimeHelper';
-import DateDifferenceType from '../models/DateDifferenceType';
+import DateDifferenceType from 'models/DateDifferenceType';
 
 interface IDateDifference {
     type: DateDifferenceType,

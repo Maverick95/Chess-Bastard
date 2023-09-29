@@ -1,19 +1,15 @@
-import React from 'react';
-import Player from '../../models/Player';
-import GetPlayerService from '../../services/GetPlayerService';
+import React, { useState } from 'react';
+import Player from 'models/Player';
+import GetPlayerService from 'services/GetPlayerService';
 import './ChessPlayerComponent.css';
-import { getDateTimeDifferenceDescription } from '../../helpers/DateTimeHelpers';
+import { getDateTimeDifferenceDescription } from 'helpers/DateTimeHelpers';
 import { useQuery } from 'react-query';
-import GetLastLiveGameService from '../../services/GetLastLiveGameService';
-import Game from '../../models/Game';
+import GetLastLiveGameService from 'services/GetLastLiveGameService';
+import Game from 'models/Game';
+import ChessPlayerDisplayType from 'models/ChessPlayerDisplayType';
 
 interface IProps {
     username: string;
-}
-
-interface IState {
-    status: 'loading' | 'error' | 'success',
-    player?: Player
 }
 
 const LoadingComponent: React.FC = () => (
@@ -87,6 +83,8 @@ const LastLiveGamePanelComponent: React.FC<Game> = ({ timeClass, result }) => {
 const ChessPlayerComponent: React.FC<IProps> = ({ username }) => {
 
     const lastLiveGameSeconds = 60 * 60;
+
+    //const [details, setDetails] = useState
 
     const {
         isError: isErrorPlayer,

@@ -1,6 +1,6 @@
 import axios from 'axios';
-import Game from '../models/Game';
-import getCurrentDateTime from '../helpers/CurrentDateTimeHelper';
+import Game from 'models/Game';
+import getCurrentDateTime from 'helpers/CurrentDateTimeHelper';
 
 const GetLastLiveGameYearMonth = (username: string, year: number, month: number, endTime: number): Promise<Game> => {
     const routeMonth: string = `${month < 10 ? '0' : ''}${month}`;
