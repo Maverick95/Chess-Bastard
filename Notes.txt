@@ -24,11 +24,12 @@ And then after this I would put a pin in this task.
 
 
 
+From PGN parsing : (properties)
 
 turn: 'w' | 'b'
 moveNumber: number
 
-notation.
+notation: object | string
 	check: string				# -> checkmate, + -> check
 	col: string					a to h	(file)
 	fig: string					the piece, blank (pawn), N (knight), B (bishop), Q (queen), K (king), R (rook)
@@ -37,20 +38,23 @@ notation.
 	row: string					1 to 8	(rank)	
 	strike: string			x means piece taken
 
-special case: castling, notation is string "O-O" | "O-O-O", check property exists
+special case: castling, notation is string "O-O" | "O-O-O", check property can be populated
 
 special case: "Qh5-f3+" is the notation where double-qualification is required
 For now, discard this case and throw exception!
 
 turn: white or black (enum)
 moveNumber: we don't need (just for ordering)
-col: turn a-h into 0-7
-row: turn 1-8 into 0-7
+piece: enum
+from: {col: turn a-h into 0-7, row: turn 1-8 into 0-7 }
+to : {col: turn a-h into 0-7, row: turn 1-8 into 0-7 }
 check: true or false
-notation: required for validation
-promtion: enum for piece
+notation: required for validation (really???)
+promotion: enum for piece
 strike: true or false
-disc: row or column, 0-7
+disc: row or col, 0-7
+
+TODO - en passant
 
 
 pseudo-code!
