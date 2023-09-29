@@ -1,0 +1,1 @@
+module.exports = "Hello! I am a default module export!";
