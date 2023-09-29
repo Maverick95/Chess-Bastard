@@ -111,3 +111,4 @@ Active card			top = 0, left = 0, width = 100%, height = 100%,	transition-props =
 Inactive card		top = 0, left = 50%, width = 0%, height = 100%,	transition-props = left and width, transition-delay = 0% of time
 
 
+TODO - fix test files resolutions
