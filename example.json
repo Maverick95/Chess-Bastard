@@ -1,0 +1,58 @@
+{
+    "games": [
+        {
+            "url": "https://www.chess.com/game/live/40945152383",
+            "pgn": "[Event \"Live Chess\"]\n[Site \"Chess.com\"]\n[Date \"2022.03.13\"]\n[Round \"-\"]\n[White \"NickEmmerson\"]\n[Black \"heavensmercy\"]\n[Result \"1-0\"]\n[CurrentPosition \"r1b2rk1/pppn1pQp/3p3B/8/3pP3/8/PPP2PPP/R3KB1R b KQ -\"]\n[Timezone \"UTC\"]\n[ECO \"C40\"]\n[ECOUrl \"https://www.chess.com/openings/Kings-Pawn-Opening-Kings-Knight-McConnell-Defense\"]\n[UTCDate \"2022.03.13\"]\n[UTCTime \"21:15:10\"]\n[WhiteElo \"456\"]\n[BlackElo \"461\"]\n[TimeControl \"300\"]\n[Termination \"NickEmmerson won by checkmate\"]\n[StartTime \"21:15:10\"]\n[EndDate \"2022.03.13\"]\n[EndTime \"21:17:43\"]\n[Link \"https://www.chess.com/game/live/40945152383\"]\n\n1. e4 {[%clk 0:05:00]} 1... e5 {[%clk 0:04:57.8]} 2. Nf3 {[%clk 0:04:56.7]} 2... Qf6 {[%clk 0:04:57.7]} 3. Nc3 {[%clk 0:04:50.5]} 3... Bc5 {[%clk 0:04:56.3]} 4. d4 {[%clk 0:04:46.3]} 4... Bxd4 {[%clk 0:04:51.4]} 5. Nxd4 {[%clk 0:04:44.5]} 5... exd4 {[%clk 0:04:51.3]} 6. Ne2 {[%clk 0:04:36.9]} 6... Nh6 {[%clk 0:04:43.6]} 7. Nf4 {[%clk 0:04:25]} 7... Ng4 {[%clk 0:04:38.9]} 8. Qxg4 {[%clk 0:04:20.7]} 8... O-O {[%clk 0:04:28]} 9. Nd5 {[%clk 0:04:11.1]} 9... d6 {[%clk 0:04:20.6]} 10. Nxf6+ {[%clk 0:04:06.6]} 10... Kh8 {[%clk 0:04:12.3]} 11. Qh4 {[%clk 0:03:49.8]} 11... gxf6 {[%clk 0:04:11.1]} 12. Qxf6+ {[%clk 0:03:45.8]} 12... Kg8 {[%clk 0:04:11]} 13. Bh6 {[%clk 0:03:31]} 13... Nd7 {[%clk 0:04:05.9]} 14. Qg7# {[%clk 0:03:28.4]} 1-0\n",
+            "time_control": "300",
+            "end_time": 1647206263,
+            "rated": true,
+            "tcn": "mC0Kgv7Tbs9IlBIBvBKBsm!VmDVEdE8!DJZRJT!?EF2TFT?!cV5ZT2",
+            "uuid": "a87855c0-a312-11ec-a9b5-78ac4409ff3c",
+            "initial_setup": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+            "fen": "r1b2rk1/pppn1pQp/3p3B/8/3pP3/8/PPP2PPP/R3KB1R b KQ -",
+            "time_class": "blitz",
+            "rules": "chess",
+            "white": {
+                "rating": 456,
+                "result": "win",
+                "@id": "https://api.chess.com/pub/player/nickemmerson",
+                "username": "NickEmmerson",
+                "uuid": "9d23a356-22d9-11e8-8022-000000000000"
+            },
+            "black": {
+                "rating": 461,
+                "result": "checkmated",
+                "@id": "https://api.chess.com/pub/player/heavensmercy",
+                "username": "heavensmercy",
+                "uuid": "45168bdc-7ce7-11ea-8104-45879fd8d547"
+            }
+        },
+        {
+            "url": "https://www.chess.com/game/live/40945231479",
+            "pgn": "[Event \"Live Chess\"]\n[Site \"Chess.com\"]\n[Date \"2022.03.13\"]\n[Round \"-\"]\n[White \"NickEmmerson\"]\n[Black \"Jp80rice\"]\n[Result \"0-1\"]\n[CurrentPosition \"4r2k/ppp2Qp1/3P3p/8/b1B5/P6P/2P3P1/R2Kq3 w - -\"]\n[Timezone \"UTC\"]\n[ECO \"C26\"]\n[ECOUrl \"https://www.chess.com/openings/Vienna-Game-Falkbeer-Variation-3.d3\"]\n[UTCDate \"2022.03.13\"]\n[UTCTime \"21:20:33\"]\n[WhiteElo \"449\"]\n[BlackElo \"485\"]\n[TimeControl \"300\"]\n[Termination \"Jp80rice won by checkmate\"]\n[StartTime \"21:20:33\"]\n[EndDate \"2022.03.13\"]\n[EndTime \"21:28:49\"]\n[Link \"https://www.chess.com/game/live/40945231479\"]\n\n1. e4 {[%clk 0:04:59.3]} 1... e5 {[%clk 0:04:59.3]} 2. Nc3 {[%clk 0:04:57]} 2... Nf6 {[%clk 0:04:58.3]} 3. d3 {[%clk 0:04:53.8]} 3... Bc5 {[%clk 0:04:56.8]} 4. f4 {[%clk 0:04:49.3]} 4... O-O {[%clk 0:04:48.3]} 5. fxe5 {[%clk 0:04:46.9]} 5... Ne8 {[%clk 0:04:39.6]} 6. e6 {[%clk 0:04:33.4]} 6... fxe6 {[%clk 0:04:19.1]} 7. Nf3 {[%clk 0:04:32]} 7... d5 {[%clk 0:04:07.2]} 8. Bg5 {[%clk 0:04:30.5]} 8... Qd7 {[%clk 0:04:01.2]} 9. exd5 {[%clk 0:04:27]} 9... exd5 {[%clk 0:03:40.3]} 10. d4 {[%clk 0:04:24.7]} 10... Bb4 {[%clk 0:03:38.1]} 11. Ne5 {[%clk 0:04:21.6]} 11... Qe6 {[%clk 0:03:18.1]} 12. a3 {[%clk 0:03:50.5]} 12... Bxc3+ {[%clk 0:03:16.1]} 13. bxc3 {[%clk 0:03:48.9]} 13... h6 {[%clk 0:03:12.3]} 14. Bh4 {[%clk 0:03:40.5]} 14... Qf5 {[%clk 0:03:05.8]} 15. Bd3 {[%clk 0:03:26.2]} 15... Qe6 {[%clk 0:02:47]} 16. h3 {[%clk 0:03:12.5]} 16... Nc6 {[%clk 0:02:30.5]} 17. c4 {[%clk 0:03:03]} 17... Nxe5 {[%clk 0:02:29.2]} 18. dxe5 {[%clk 0:02:54.5]} 18... Qxe5+ {[%clk 0:02:28.2]} 19. Kd2 {[%clk 0:02:44.2]} 19... Nf6 {[%clk 0:01:53.9]} 20. Bxf6 {[%clk 0:02:41.2]} 20... Rxf6 {[%clk 0:01:48.7]} 21. Rf1 {[%clk 0:02:36.2]} 21... Rxf1 {[%clk 0:01:37.6]} 22. Qxf1 {[%clk 0:02:34.1]} 22... Qg5+ {[%clk 0:01:36.2]} 23. Ke1 {[%clk 0:02:28.8]} 23... Bd7 {[%clk 0:01:30.9]} 24. cxd5 {[%clk 0:02:22.2]} 24... Re8+ {[%clk 0:01:29]} 25. Kd1 {[%clk 0:02:15.8]} 25... Ba4 {[%clk 0:01:17.5]} 26. Bc4 {[%clk 0:02:02.8]} 26... Kh8 {[%clk 0:01:01.3]} 27. Qf7 {[%clk 0:01:51.6]} 27... Qe5 {[%clk 0:00:40.6]} 28. d6 {[%clk 0:01:31.2]} 28... Qe1# {[%clk 0:00:27.3]} 0-1\n",
+            "time_control": "300",
+            "end_time": 1647206929,
+            "rated": true,
+            "tcn": "mC0Kbs!Tlt9InD8!DKT8KS1SgvZJcM7ZCJSJtBIzvKZSiqzsjs3VMFSLftLSpx5QsAQKBKSKel8TFT9ThfTfdfKMle6ZAJ48edZytA!?f1MKJRKe",
+            "uuid": "692c002e-a313-11ec-a9b5-78ac4409ff3c",
+            "initial_setup": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+            "fen": "4r2k/ppp2Qp1/3P3p/8/b1B5/P6P/2P3P1/R2Kq3 w - -",
+            "time_class": "blitz",
+            "rules": "chess",
+            "white": {
+                "rating": 449,
+                "result": "checkmated",
+                "@id": "https://api.chess.com/pub/player/nickemmerson",
+                "username": "NickEmmerson",
+                "uuid": "9d23a356-22d9-11e8-8022-000000000000"
+            },
+            "black": {
+                "rating": 485,
+                "result": "win",
+                "@id": "https://api.chess.com/pub/player/jp80rice",
+                "username": "Jp80rice",
+                "uuid": "df65e34c-0f1c-11ea-8546-8d361a189ba8"
+            }
+        }
+    ]
+}
