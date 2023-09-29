@@ -199,6 +199,7 @@ export {
   Piece,
   Position,
   GameAnalysis,
+  BoardAnalysis,
   PositionToIndex,
   IndexToPosition,
   createDefaultGameAnalysis,
