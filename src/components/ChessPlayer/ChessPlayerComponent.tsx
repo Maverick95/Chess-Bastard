@@ -60,7 +60,7 @@ const getResultClass = (result: string): string => {
     if (result === 'win') {
         return 'win';
     }
-    if (['repetition', 'stalemate', 'insufficient', 'abandoned'].includes(result)) {
+    if (['repetition', 'stalemate', 'insufficient'].includes(result)) {
         return 'draw';
     }
     return 'lose';
