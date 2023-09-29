@@ -227,6 +227,7 @@ describe('GetLastLiveGameService', () => {
     describe('Query current and previous month', () => {
 
         const currentDate = new Date(2022, 2, 1, 9, 9, 9);
+        const monthStartDate = new Date(2022, 2);
 
         it('should return most recent Live game from current month', async () => {
             // ARRANGE
@@ -234,7 +235,7 @@ describe('GetLastLiveGameService', () => {
                 'https://api.chess.com/pub/player/NickEmmerson/games/2022/03': [
                     {
                         rules: 'chess',
-                        end_time: Math.floor((new Date(2022, 2, 1, 0, 0, 1)).getTime() / 1000),
+                        end_time: Math.floor(monthStartDate.getTime() / 1000),
                         time_class: 'bullet',
                         time_control: 60,
                         white: {
@@ -250,7 +251,7 @@ describe('GetLastLiveGameService', () => {
                 'https://api.chess.com/pub/player/NickEmmerson/games/2022/02': [
                     {
                         rules: 'chess',
-                        end_time: Math.floor((new Date(2022, 1, 28, 23, 30, 30)).getTime() / 1000),
+                        end_time: Math.floor(monthStartDate.getTime() / 1000) - 30,
                         time_class: 'bullet',
                         time_control: 60,
                         white: {
@@ -286,6 +287,111 @@ describe('GetLastLiveGameService', () => {
             expect(mockAxiosGet).toHaveBeenCalledTimes(1);
         });
 
+        it('should return most recent Live game from previous month', async () => {
+            // ARRANGE
+            const data: { [url: string]: any[] } = {
+                'https://api.chess.com/pub/player/NickEmmerson/games/2022/03': [],
+                  
+                'https://api.chess.com/pub/player/NickEmmerson/games/2022/02': [
+                    {
+                        rules: 'chess',
+                        end_time: Math.floor(monthStartDate.getTime() / 1000) - 30,
+                        time_class: 'bullet',
+                        time_control: 60,
+                        white: {
+                            username: 'NickEmmerson',
+                            result: 'win'
+                        },
+                        black: {
+                            username: 'DonaldTrump',
+                            result: 'checkmated'
+                        }
+                    },
+                    {
+                        rules: 'chess',
+                        end_time: Math.floor(monthStartDate.getTime() / 1000) - 10,
+                        time_class: 'blitz',
+                        time_control: 300,
+                        white: {
+                            username: 'JohnnyDepp',
+                            result: 'checkmated'
+                        },
+                        black: {
+                            username: 'NickEmmerson',
+                            result: 'win'
+                        }
+                    }
+                ],
+            };
+            const expected: Game = {
+                timeClass: 'blitz',
+                time: 300,
+                player: 'NickEmmerson',
+                opponent: 'JohnnyDepp',
+                playerColour: 'black',
+                result: 'win'
+            };
+            mockAxiosGet.mockImplementation((url: string) => Promise.resolve({
+                data: { games: data[url] ?? [] }
+            }));
+            mockGetCurrentDateTime.mockReturnValue(currentDate);
+
+            // ACT
+            const actual = await GetLastLiveGameService('NickEmmerson', 60 * 60 * 24);
+
+            // ASSERT
+            expect(actual).toEqual(expected);
+            expect(mockAxiosGet).toHaveBeenCalledTimes(2);
+        });
+
+        it('should return null if no games found within time frame for either month', async () => {
+            // ARRANGE
+            const data: { [url: string]: any[] } = {
+                'https://api.chess.com/pub/player/NickEmmerson/games/2022/03': [],
+                  
+                'https://api.chess.com/pub/player/NickEmmerson/games/2022/02': [
+                    {
+                        rules: 'chess',
+                        end_time: Math.floor(monthStartDate.getTime() / 1000) - (60 * 60 * 24) - 50,
+                        time_class: 'bullet',
+                        time_control: 60,
+                        white: {
+                            username: 'NickEmmerson',
+                            result: 'win'
+                        },
+                        black: {
+                            username: 'DonaldTrump',
+                            result: 'checkmated'
+                        }
+                    },
+                    {
+                        rules: 'chess',
+                        end_time: Math.floor(monthStartDate.getTime() / 1000) - (60 * 60 * 24),
+                        time_class: 'blitz',
+                        time_control: 300,
+                        white: {
+                            username: 'JohnnyDepp',
+                            result: 'checkmated'
+                        },
+                        black: {
+                            username: 'NickEmmerson',
+                            result: 'win'
+                        }
+                    }
+                ],
+            };
+            mockAxiosGet.mockImplementation((url: string) => Promise.resolve({
+                data: { games: data[url] ?? [] }
+            }));
+            mockGetCurrentDateTime.mockReturnValue(currentDate);
+
+            // ACT
+            const actual = await GetLastLiveGameService('NickEmmerson', 60 * 60 * 24);
+
+            // ASSERT
+            expect(actual).toBeNull();
+            expect(mockAxiosGet).toHaveBeenCalledTimes(2);
+        });
 
     });
 
