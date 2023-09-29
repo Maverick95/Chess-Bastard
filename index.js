@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import HelloComponent from './src/components/HelloComponent.tsx';
+import ChessPlayerComponent from './src/components/ChessPlayer/ChessPlayerComponent';
 
 const root = document.getElementById('root');
 
-ReactDOM.render(<HelloComponent />, root);
+ReactDOM.render(<ChessPlayerComponent username="cheezburgers" />, root);
