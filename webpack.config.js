@@ -29,11 +29,11 @@ module.exports = {
         new CopyWebpackPlugin({
             patterns: [
                 {
-                    from: 'src/assets/**.jpg',
+                    from: 'src/assets/*.jpg',
                     to: path.resolve(__dirname, 'dist/assets/[name][ext]')
                 },
                 {
-                    from: 'src/assets/**.png',
+                    from: 'src/assets/*.png',
                     to: path.resolve(__dirname, 'dist/assets/[name][ext]')
                 }
             ]
