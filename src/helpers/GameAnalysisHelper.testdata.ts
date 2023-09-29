@@ -243,6 +243,106 @@ const getGameAnalysisFromPgnTestInstances: getGameAnalysisFromPgnTestInstance[] 
         }
       }
     }
+  },
+
+  {
+    url: "https://www.chess.com/game/live/42553128997",
+    pgn: "[Event \"Live Chess\"]\n[Site \"Chess.com\"]\n[Date \"2022.04.01\"]\n[Round \"-\"]\n[White \"MindaugasMieikis\"]\n[Black \"JamesCookpandp\"]\n[Result \"0-1\"]\n[CurrentPosition \"3k4/1p6/p6b/1qp4p/P7/2P5/Kq6/8 w - -\"]\n[Timezone \"UTC\"]\n[ECO \"C21\"]\n[ECOUrl \"https://www.chess.com/openings/Center-Game\"]\n[UTCDate \"2022.04.01\"]\n[UTCTime \"11:52:37\"]\n[WhiteElo \"692\"]\n[BlackElo \"696\"]\n[TimeControl \"180\"]\n[Termination \"JamesCookpandp won by checkmate\"]\n[StartTime \"11:52:37\"]\n[EndDate \"2022.04.01\"]\n[EndTime \"11:57:44\"]\n[Link \"https://www.chess.com/game/live/42553128997\"]\n\n1. e4 {[%clk 0:03:00]} 1... e5 {[%clk 0:02:59.5]} 2. d4 {[%clk 0:02:59.1]} 2... Nf6 {[%clk 0:02:58.9]} 3. d5 {[%clk 0:02:58.7]} 3... d6 {[%clk 0:02:55.6]} 4. Qe2 {[%clk 0:02:57.4]} 4... c6 {[%clk 0:02:53.2]} 5. Bg5 {[%clk 0:02:56.6]} 5... h6 {[%clk 0:02:50.2]} 6. Bxf6 {[%clk 0:02:55.7]} 6... Qxf6 {[%clk 0:02:48.1]} 7. Nc3 {[%clk 0:02:55.4]} 7... Bd7 {[%clk 0:02:42]} 8. O-O-O {[%clk 0:02:53.8]} 8... c5 {[%clk 0:02:39.6]} 9. Nb5 {[%clk 0:02:49.5]} 9... a6 {[%clk 0:02:35.4]} 10. Nc7+ {[%clk 0:02:47.8]} 10... Ke7 {[%clk 0:02:29.5]} 11. Nxa8 {[%clk 0:02:47.7]} 11... Bb5 {[%clk 0:02:26.4]} 12. Qe3 {[%clk 0:02:41.3]} 12... g6 {[%clk 0:02:20.5]} 13. Bxb5 {[%clk 0:02:40.5]} 13... h5 {[%clk 0:02:17]} 14. Be2 {[%clk 0:02:37]} 14... Bh6 {[%clk 0:02:15.3]} 15. f4 {[%clk 0:02:34.3]} 15... exf4 {[%clk 0:02:13]} 16. Qd3 {[%clk 0:02:30.6]} 16... f3+ {[%clk 0:02:11.7]} 17. Kb1 {[%clk 0:02:30]} 17... fxg2 {[%clk 0:02:10.6]} 18. Nf3 {[%clk 0:02:04.9]} 18... gxh1=Q {[%clk 0:02:05.9]} 19. Rxh1 {[%clk 0:02:04.8]} 19... g5 {[%clk 0:02:00.6]} 20. Nb6 {[%clk 0:01:57.7]} 20... g4 {[%clk 0:01:59]} 21. Nh4 {[%clk 0:01:55.3]} 21... Qxh4 {[%clk 0:01:57.2]} 22. e5 {[%clk 0:01:52.3]} 22... Nd7 {[%clk 0:01:46.2]} 23. Nxd7 {[%clk 0:01:44.8]} 23... Kxd7 {[%clk 0:01:45]} 24. Qf5+ {[%clk 0:01:41.3]} 24... Kc7 {[%clk 0:01:42.7]} 25. a3 {[%clk 0:01:35.2]} 25... Re8 {[%clk 0:01:35.8]} 26. Qxf7+ {[%clk 0:01:33.9]} 26... Kd8 {[%clk 0:01:33.5]} 27. Rf1 {[%clk 0:01:24.6]} 27... Qe7 {[%clk 0:00:56.5]} 28. Qh7 {[%clk 0:01:20.2]} 28... Qxh7 {[%clk 0:00:54.9]} 29. exd6 {[%clk 0:01:17.3]} 29... Rxe2 {[%clk 0:00:52.5]} 30. Rc1 {[%clk 0:01:15.2]} 30... Qe4 {[%clk 0:00:48.9]} 31. Ka2 {[%clk 0:01:13.2]} 31... Re1 {[%clk 0:00:46]} 32. Ra1 {[%clk 0:01:11.2]} 32... Rxa1+ {[%clk 0:00:44.3]} 33. Kxa1 {[%clk 0:01:10.1]} 33... Qxd5 {[%clk 0:00:43.3]} 34. Kb1 {[%clk 0:01:09.3]} 34... Qxd6 {[%clk 0:00:42.4]} 35. c3 {[%clk 0:01:05.9]} 35... Qxh2 {[%clk 0:00:41.5]} 36. Ka2 {[%clk 0:01:04.3]} 36... g3 {[%clk 0:00:40.8]} 37. Kb3 {[%clk 0:01:02.9]} 37... g2 {[%clk 0:00:40.3]} 38. Kc4 {[%clk 0:01:01.8]} 38... g1=Q {[%clk 0:00:40.2]} 39. Kb3 {[%clk 0:00:58.8]} 39... Qc7 {[%clk 0:00:38.4]} 40. Kc4 {[%clk 0:00:56.5]} 40... Qa5 {[%clk 0:00:36.6]} 41. Kb3 {[%clk 0:00:55.4]} 41... Qb5+ {[%clk 0:00:35.4]} 42. Ka2 {[%clk 0:00:54.2]} 42... Qg2 {[%clk 0:00:34.2]} 43. a4 {[%clk 0:00:41.2]} 43... Qgxb2# {[%clk 0:00:34.1]} 0-1\n",
+    expected: {
+      white: {
+        [Piece.PAWN]: {
+          initial: 8,
+          gained: 0,
+          lost: 6,
+          positions: [
+            {row: 3, col: 0},
+            {row: 2, col: 2},
+          ],
+        },
+        [Piece.ROOK]: {
+          initial: 2,
+          gained: 0,
+          lost: 2,
+          positions: [],
+        },
+        [Piece.KNIGHT]: {
+          initial: 2,
+          gained: 0,
+          lost: 2,
+          positions: [],
+        },
+        [Piece.BISHOP]: {
+          initial: 2,
+          gained: 0,
+          lost: 2,
+          positions: [],
+        },
+        [Piece.QUEEN]: {
+          initial: 1,
+          gained: 0,
+          lost: 1,
+          positions: [],
+        },
+        [Piece.KING]: {
+          initial: 1,
+          gained: 0,
+          lost: 0,
+          positions: [
+            {row: 1, col: 0},
+          ],
+        }
+      },
+      black: {
+        [Piece.PAWN]: {
+          initial: 8,
+          gained: 0,
+          lost: 4,
+          positions: [
+            {row: 5, col: 0},
+            {row: 6, col: 1},
+            {row: 4, col: 2},
+            {row: 4, col: 7},
+          ],
+        },
+        [Piece.ROOK]: {
+          initial: 2,
+          gained: 0,
+          lost: 2,
+          positions: [],
+        },
+        [Piece.KNIGHT]: {
+          initial: 2,
+          gained: 0,
+          lost: 2,
+          positions: [],
+        },
+        [Piece.BISHOP]: {
+          initial: 2,
+          gained: 0,
+          lost: 1,
+          positions: [
+            {row: 5, col: 7},
+          ],
+        },
+        [Piece.QUEEN]: {
+          initial: 1,
+          gained: 2,
+          lost: 1,
+          positions: [
+            {row: 4, col: 1},
+            {row: 1, col: 1},
+          ],
+        },
+        [Piece.KING]: {
+          initial: 1,
+          gained: 0,
+          lost: 0,
+          positions: [
+            {row: 7, col: 3},
+          ],
+        }
+      }
+    }
   }
 ];
 
