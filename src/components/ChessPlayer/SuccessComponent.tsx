@@ -16,7 +16,7 @@ const SuccessComponent: React.FC<IProps> = ({ player, changeDetails }) => {
 
   return (
       <>
-          <header className="chess-player-header chess-border-theme">
+          <header className="chess-player-header chess-header-text chess-border-theme">
               {username}
           </header>
           <div className="chess-player-avatar">
@@ -28,7 +28,7 @@ const SuccessComponent: React.FC<IProps> = ({ player, changeDetails }) => {
                   :
                   <div className="chess-player-content vertical">
                       <div>last seen</div>
-                      <div className="chess-time-difference">{difference}</div>
+                      <div className="chess-header-text">{difference}</div>
                   </div>
           }
       </>

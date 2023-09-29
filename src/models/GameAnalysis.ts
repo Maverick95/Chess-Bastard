@@ -198,6 +198,7 @@ const createDefaultBoardAnalysis = (): BoardAnalysis => createBoardAnalysis(crea
 export {
   Piece,
   Position,
+  PieceAnalysis,
   GameAnalysis,
   BoardAnalysis,
   PositionToIndex,

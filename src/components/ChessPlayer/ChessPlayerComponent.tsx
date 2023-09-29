@@ -64,9 +64,8 @@ const ChessPlayerComponent: React.FC<IProps> = ({ username, lastLiveGameSeconds 
     const sectionClassNamePlayerPart2 = details === ChessPlayerDisplayType.DISPLAY_PLAYER ? 'chess-player-card-active' : 'chess-player-card-last-active';
     const sectionClassNamePlayer = `${sectionClassNamePlayerPart1} ${sectionClassNamePlayerPart2}`;
 
-    const sectionClassNameLastLiveGamePart1 = 'chess-player-card';
-    const sectionClassNameLastLiveGamePart2 = details === ChessPlayerDisplayType.DISPLAY_RECENT_GAME ? 'chess-player-card-active' : 'chess-player-card-last-active';
-    const sectionClassNameLastLiveGame = `${sectionClassNameLastLiveGamePart1} ${sectionClassNameLastLiveGamePart2}`;
+    const sectionClassNameLastLiveGamePart1 = details === ChessPlayerDisplayType.DISPLAY_RECENT_GAME ? 'chess-player-card-active' : 'chess-player-card-last-active';
+    const sectionClassNameLastLiveGame = `chess-player-card ${sectionClassNameLastLiveGamePart1}`;
     
     return (
         <div className="chess-player">
