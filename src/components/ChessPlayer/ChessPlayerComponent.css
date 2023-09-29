@@ -6,7 +6,23 @@
     --chess-color-downright: rgb(220,190,190);
 }
 
+.chess-player {
+    width: 350px;
+    height: 500px;
+}
+
+.chess-panel .chess-player {
+    display: inline-flex;
+    vertical-align: top;
+    margin: 5px;
+}
+
+.chess-player-pinned {
+    position: relative;
+}
+
 .chess-player-card {
+    position: absolute;
     box-sizing: border-box;
     width: 350px;
     height: 500px;
@@ -20,12 +36,20 @@
     background-color: var(--chess-color-bg);
     display: flex;
     flex-direction: column;
+    transition-property: transform;
+    transition-duration: 0.5s;
 }
 
-.chess-panel .chess-player-card {
-    display: inline-flex;
-    vertical-align: top;
-    margin: 5px;
+.chess-player-card-active {
+    transition-delay: 0.5s;
+    transform: scaleX(1);
+    transition-timing-function: ease-out;
+}
+
+.chess-player-card-last-active {
+    transition-delay: 0s;
+    transform: scaleX(0);
+    transition-timing-function: ease-in;
 }
 
 .chess-centered {
