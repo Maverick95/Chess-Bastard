@@ -42,7 +42,7 @@ const ChessPlayerComponent: React.FC<IProps> = ({ username, lastLiveGameSeconds 
         `query-chess-last-live-game-${username}-${lastLiveGameSeconds}`,
         () => GetLastLiveGameService(username, lastLiveGameSeconds),
         {
-            enabled: isSuccessPlayer,
+            enabled: isSuccessPlayer && details === ChessPlayerDisplayType.DISPLAY_PLAYER,
             refetchInterval: 1000 * 30,
             refetchIntervalInBackground: true,
             refetchOnWindowFocus: false,
