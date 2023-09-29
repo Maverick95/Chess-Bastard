@@ -21,20 +21,65 @@ And display a picture to show this.
 
 And then after this I would put a pin in this task.
 
-Flashing images will show recent game type along with win/loss.
-
-a) Better images
-b) Flashing animation
 
 
 
 
-win
 
-agreed
-repetition
-stalemate
-insufficient
-abandoned
+notation.
+	check: string
+	col: string
+	fig: string
+	notation: string
+	promotion: string
+	row: string
+	strike: string
+turn: 'w' | 'b'
 
+
+did each player lose their queen???
+
+{
+  white : { lostQueen: boolean }
+  black : { lostQueen: boolean }
+}
+
+keep track of where each player's queen is
+
+white starts with queen on d1, black on d8
+
+ALSO
+
+need to keep track of promotions to queen
+
+need to track where ALL of the queens are
+
+summarise with -
+
+queens initial - 1
+queens gained -
+queens lost -
+
+{
+  white: { queen: { initial, gained, lost } }
+}
+
+Pseudo-code :
+
+begin with
+
+{
+	white: { queen: { initial: 1, gained: 0, lost: 0, positions: [ 'd1' ] } }
+	black: { queen: { initial: 1, gained: 0, lost: 0, position: [ 'd8' ] } }
+}
+
+For each move (using white WLOG)
+
+a) if castling, ignore
+b) space being moved to, does black have queen there?
+	if so, remove queen, add to lost count
+c) piece being moved, is this a queen? if so, update the relevant position
+( this may be tricky to identify 
+d) if not, is it a pawn being promoted to a queen? if so, update the queen count,
+add in new queen position
 
