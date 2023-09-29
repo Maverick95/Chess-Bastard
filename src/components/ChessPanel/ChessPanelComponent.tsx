@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import './ChessPanelComponent.css';
 import ChessPlayerComponent from 'components/ChessPlayer/ChessPlayerComponent';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -59,7 +59,15 @@ const ChessPanelComponent: React.FC = () => {
     const [unit, setUnit] = useState<Unit>('seconds');
     const [value, setValue] = useState<number>(1);
 
-    const range = ranges[unit];
+    useEffect(() => {
+        const range = ranges[unit];
+        if (value < range.min) {
+            setValue(range.min);
+        }
+        else if (value > range.max) {
+            setValue(range.max);
+        }
+    }, [unit, value]);
 
     const lastLiveGameSeconds = useMemo(() => getUnitValueInSeconds(unit, value), [unit, value]);
 
@@ -72,7 +80,7 @@ const ChessPanelComponent: React.FC = () => {
                 }
                 <div className="chess-time-selector">
                     <span>look for games within last</span>
-                    <input type="number" {...range} value={value} onChange={(event) => { setValue(parseInt(event.target.value)); }} />
+                    <input type="number" {...ranges[unit]} value={value} onChange={(event) => { setValue(parseInt(event.target.value)); }} />
                     <select onChange={(event) => { setUnit(event.target.value as any); }}>
                         {Object.keys(ranges).map((value) => <option value={value}>{value}</option>)}
                     </select>
