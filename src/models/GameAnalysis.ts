@@ -3,12 +3,12 @@
  */
 
 enum Piece {
-  PAWN,
-  ROOK,
-  KNIGHT,
-  BISHOP,
-  QUEEN,
-  KING
+  PAWN = "pawn",
+  ROOK = "rook",
+  KNIGHT = "knight",
+  BISHOP = "bishop",
+  QUEEN = "queen",
+  KING = "king",
 };
 
 interface Position {

@@ -40,7 +40,8 @@ describe('GetLastLiveGameService', () => {
                         black: {
                             username: 'VladmirPutin',
                             result: 'checkmated'
-                        }
+                        },
+                        pgn: 'Test PGN',
                     },
                     {
                         uuid: '952d65c7-cfb6-4668-838f-db44bdb6e792',
@@ -55,7 +56,8 @@ describe('GetLastLiveGameService', () => {
                         black: {
                             username: 'NickEmmerson',
                             result: 'checkmated'
-                        }
+                        },
+                        pgn: 'Test PGN',
                     }
                 ]
             };
@@ -63,10 +65,10 @@ describe('GetLastLiveGameService', () => {
                 uuid: '952d65c7-cfb6-4668-838f-db44bdb6e792',
                 timeClass: 'blitz',
                 time: 300,
-                player: 'NickEmmerson',
                 opponent: 'DonaldTrump',
-                playerColour: 'black',
-                result: 'checkmated'
+                player: 'black',
+                result: 'checkmated',
+                pgn: 'Test PGN',
             };
             mockAxiosGet.mockImplementation((url: string) => Promise.resolve({
                 data: { games: data[url] ?? [] }
@@ -98,7 +100,8 @@ describe('GetLastLiveGameService', () => {
                         black: {
                             username: 'VladmirPutin',
                             result: 'checkmated'
-                        }
+                        },
+                        pgn: 'Test PGN',
                     },
                     {
                         uuid: '952d65c7-cfb6-4668-838f-db44bdb6e792',
@@ -113,7 +116,8 @@ describe('GetLastLiveGameService', () => {
                         black: {
                             username: 'NickEmmerson',
                             result: 'checkmated'
-                        }
+                        },
+                        pgn: 'Test PGN',
                     },
                     {
                         uuid: '9f175a02-0da6-452e-9d9d-eda142b01c79',
@@ -128,7 +132,8 @@ describe('GetLastLiveGameService', () => {
                         black: {
                             username: 'NickEmmerson',
                             result: 'checkmated'
-                        }
+                        },
+                        pgn: 'Test PGN',
                     },
                     {
                         uuid: 'd639e6a1-c1e4-4398-804d-c37cb484070c',
@@ -143,7 +148,8 @@ describe('GetLastLiveGameService', () => {
                         black: {
                             username: 'NickEmmerson',
                             result: 'checkmated'
-                        }
+                        },
+                        pgn: 'Test PGN',
                     },
                     {
                         uuid: 'c4d1bb53-af60-4cbb-9e54-8e28a0592acf',
@@ -158,7 +164,8 @@ describe('GetLastLiveGameService', () => {
                         black: {
                             username: 'RobertMugabe',
                             result: 'checkmated'
-                        }
+                        },
+                        pgn: 'Test PGN',
                     },
                 ]
             };
@@ -166,10 +173,10 @@ describe('GetLastLiveGameService', () => {
                 uuid: '952d65c7-cfb6-4668-838f-db44bdb6e792',
                 timeClass: 'blitz',
                 time: 300,
-                player: 'NickEmmerson',
                 opponent: 'DonaldTrump',
-                playerColour: 'black',
-                result: 'checkmated'
+                player: 'black',
+                result: 'checkmated',
+                pgn: 'Test PGN',
             };
             mockAxiosGet.mockImplementation((url: string) => Promise.resolve({
                 data: { games: data[url] ?? [] }
@@ -201,7 +208,8 @@ describe('GetLastLiveGameService', () => {
                         black: {
                             username: 'VladmirPutin',
                             result: 'checkmated'
-                        }
+                        },
+                        pgn: 'Test PGN',
                     },
                     {
                         uuid: '952d65c7-cfb6-4668-838f-db44bdb6e792',
@@ -216,7 +224,8 @@ describe('GetLastLiveGameService', () => {
                         black: {
                             username: 'NickEmmerson',
                             result: 'checkmated'
-                        }
+                        },
+                        pgn: 'Test PGN',
                     }
                 ]
             };
@@ -257,7 +266,8 @@ describe('GetLastLiveGameService', () => {
                         black: {
                             username: 'VladmirPutin',
                             result: 'checkmated'
-                        }
+                        },
+                        pgn: 'Test PGN',
                     }
                 ],
                 'https://api.chess.com/pub/player/NickEmmerson/games/2022/02': [
@@ -274,7 +284,8 @@ describe('GetLastLiveGameService', () => {
                         black: {
                             username: 'DonaldTrump',
                             result: 'checkmated'
-                        }
+                        },
+                        pgn: 'Test PGN',
                     }
                 ],
 
@@ -283,10 +294,10 @@ describe('GetLastLiveGameService', () => {
                 uuid: 'b4f69510-da56-498b-bde1-84b52601b714',
                 timeClass: 'bullet',
                 time: 60,
-                player: 'NickEmmerson',
                 opponent: 'VladmirPutin',
-                playerColour: 'white',
-                result: 'win'
+                player: 'white',
+                result: 'win',
+                pgn: 'Test PGN',
             };
             mockAxiosGet.mockImplementation((url: string) => Promise.resolve({
                 data: { games: data[url] ?? [] }
@@ -320,7 +331,8 @@ describe('GetLastLiveGameService', () => {
                         black: {
                             username: 'DonaldTrump',
                             result: 'checkmated'
-                        }
+                        },
+                        pgn: 'Test PGN',
                     },
                     {
                         uuid: '952d65c7-cfb6-4668-838f-db44bdb6e792',
@@ -335,7 +347,8 @@ describe('GetLastLiveGameService', () => {
                         black: {
                             username: 'NickEmmerson',
                             result: 'win'
-                        }
+                        },
+                        pgn: 'Test PGN',
                     }
                 ],
             };
@@ -343,10 +356,10 @@ describe('GetLastLiveGameService', () => {
                 uuid: '952d65c7-cfb6-4668-838f-db44bdb6e792',
                 timeClass: 'blitz',
                 time: 300,
-                player: 'NickEmmerson',
                 opponent: 'JohnnyDepp',
-                playerColour: 'black',
-                result: 'win'
+                player: 'black',
+                result: 'win',
+                pgn: 'Test PGN',
             };
             mockAxiosGet.mockImplementation((url: string) => Promise.resolve({
                 data: { games: data[url] ?? [] }
@@ -380,7 +393,8 @@ describe('GetLastLiveGameService', () => {
                         black: {
                             username: 'DonaldTrump',
                             result: 'checkmated'
-                        }
+                        },
+                        pgn: 'Test PGN',
                     },
                     {
                         uuid: '952d65c7-cfb6-4668-838f-db44bdb6e792',
@@ -395,7 +409,8 @@ describe('GetLastLiveGameService', () => {
                         black: {
                             username: 'NickEmmerson',
                             result: 'win'
-                        }
+                        },
+                        pgn: 'Test PGN',
                     }
                 ],
             };

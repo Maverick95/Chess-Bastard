@@ -3,12 +3,12 @@ import React from 'react';
 
 const getResultClass = (result: string): string => {
   if (result === 'win') {
-      return 'win';
+      return 'chess-result-win';
   }
   if (['repetition', 'stalemate', 'insufficient'].includes(result)) {
-      return 'draw';
+      return 'chess-result-draw';
   }
-  return 'lose';
+  return 'chess-result-lose';
 };
 
 interface IProps {

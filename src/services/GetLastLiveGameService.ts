@@ -18,16 +18,15 @@ const GetLastLiveGameYearMonth = (username: string, year: number, month: number,
                 uuid: value.uuid,
                 timeClass: value.time_class,
                 time: parseInt(value.time_control),
-                player: username,
                 ...(value.white.username.toUpperCase() === username.toUpperCase() ?
                 {
                     opponent: value.black.username,
-                    playerColour: 'white',
+                    player: 'white',
                     result: value.white.result
                 } :
                 {
                     opponent: value.white.username,
-                    playerColour: 'black',
+                    player: 'black',
                     result: value.black.result
                 }),
                 pgn: value.pgn,
