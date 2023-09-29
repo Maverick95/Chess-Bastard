@@ -33,3 +33,11 @@ Yeah I remember this they use a reducer with a state of LOADING.
 
 Since these are 200 x 200, draw up a default img to use.
 
+I'd like to design a simple loading component.
+
+What is the next step here?
+
+I would say, designing the simple card structure to show the player.
+
+How about ripping off say a common playing card design?
+

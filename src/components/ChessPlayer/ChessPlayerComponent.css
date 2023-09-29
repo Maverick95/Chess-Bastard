@@ -1,0 +1,56 @@
+:root {
+    --chess-player-card-border: 15px;
+    --chess-player-header-border: 10px;
+    --chess-color-bg: rgb(119,148,55);
+    --chess-color-upleft: rgb(235,235,208);
+    --chess-color-downright: rgb(220,190,190);
+}
+
+.chess-player-card {
+    box-sizing: border-box;
+    width: 350px;
+    height: 500px;
+    padding: var(--chess-player-card-border);
+    font-family: 'Copperplate Gothic';
+    font-size: 18px;
+    text-transform: capitalize;
+    text-align: center;
+    border: var(--chess-player-card-border) solid #333333;
+    border-radius: var(--chess-player-card-border);
+    background-color: var(--chess-color-bg);
+    display: flex;
+    flex-direction: column;
+}
+
+.chess-border-theme {
+    border-width: var(--chess-player-header-border);
+    border-style: solid;
+    border-color: var(--chess-color-upleft) var(--chess-color-downright) var(--chess-color-downright) var(--chess-color-upleft);
+}
+
+.chess-player-header {
+    font-weight: bold;
+    font-size: 24px;
+    padding: 5px 0;
+}
+
+.chess-player-avatar {
+    margin: var(--chess-player-card-border) 0;
+    display: flex;
+    justify-content: center;
+}
+
+.chess-player-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: var(--chess-color-upleft);
+    border: var(--chess-player-header-border) solid var(--chess-color-downright);
+    border-radius: var(--chess-player-header-border);
+}
+
+.chess-player-last-seen {
+    font-size: 24px;
+    font-weight: bold;
+}
