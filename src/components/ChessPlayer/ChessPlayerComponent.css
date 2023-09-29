@@ -69,7 +69,6 @@
 .chess-player-content {
     flex-grow: 1;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     background-color: var(--chess-color-upleft);
@@ -77,7 +76,43 @@
     border-radius: var(--chess-player-header-border);
 }
 
-.chess-detail-standout {
+.chess-player-content.vertical {
+    flex-direction: column;
+}
+
+.chess-player-content.horizontal {
+    flex-direction: row;
+}
+
+.chess-player-content.horizontal > * {
+    animation: 1s linear 0ms 4 alternate none running flasher;
+}
+
+@keyframes flasher {
+    from {
+        opacity: 1
+    }
+    to {
+        opacity: 0
+    }
+}
+
+.chess-time-difference {
     font-size: 24px;
     font-weight: bold;
+}
+
+.chess-result-marker {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.chess-result-marker.win::before {
+    content: "\2713";
+    color: green;
+}
+
+.chess-result-marker.lose::before {
+    content: "\2716";
+    color: red;
 }

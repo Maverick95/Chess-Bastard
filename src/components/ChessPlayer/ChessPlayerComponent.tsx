@@ -5,6 +5,7 @@ import './ChessPlayerComponent.css';
 import { getDateTimeDifferenceDescription } from '../../helpers/DateTimeHelpers';
 import { useQuery } from 'react-query';
 import GetLastLiveGameService from '../../services/GetLastLiveGameService';
+import Game from '../../models/Game';
 
 interface IProps {
     username: string;
@@ -43,34 +44,51 @@ const SuccessComponent: React.FC<Player> = ({ username, avatar, lastOnline, last
             <div className="chess-player-avatar">
                 <img className="chess-border-theme" {...{ width: 200, height: 200, src: avatar, alt: `chess.com avatar for ${username}` }} />
             </div>
-            <div className="chess-player-content">
-                {
-                    lastLiveGame ?
-                    (
-                        <>
-                        <img {...{
-                            width: 100, height: 100,
-                            src: `./assets/${lastLiveGame.timeClass}.png`,
-                            alt: `Last Live Game played was type ${lastLiveGame.timeClass}`,
-                        } } />
-                        </>
-                    ) :
-                    (
-                        <>
-                            <div>last seen</div>
-                            <div className="chess-detail-standout">{difference}</div>
-                        </>
-                    )
-                }
-            </div>
+            {
+                lastLiveGame ?
+                    <LastLiveGamePanelComponent {...lastLiveGame} />
+                    :
+                    <div className="chess-player-content vertical">
+                        <div>last seen</div>
+                        <div className="chess-time-difference">{difference}</div>
+                    </div>
+            }
         </>
+    );
+
+};
+
+const getResultClass = (result: string): string => {
+    if (result === 'win') {
+        return 'win';
+    }
+    if (['repetition', 'stalemate', 'insufficient', 'abandoned'].includes(result)) {
+        return 'draw';
+    }
+    return 'lose';
+};
+
+const LastLiveGamePanelComponent: React.FC<Game> = ({ timeClass, result }) => {
+
+    const resultClass = getResultClass(result);
+
+    return (
+    <div className="chess-player-content horizontal">
+        <div className={`chess-result-marker ${resultClass}`} />
+        <img {...{
+            width: 100, height: 100,
+            src: `./assets/${timeClass}.png`,
+            alt: `Last Live Game played was type ${timeClass}`,
+        }} />
+        <div className={`chess-result-marker ${resultClass}`} />
+    </div>
     );
 
 };
 
 const ChessPlayerComponent: React.FC<IProps> = ({ username }) => {
 
-    const lastLiveGameSeconds = 60 * 30;
+    const lastLiveGameSeconds = 60 * 60;
 
     const {
         isError: isErrorPlayer,
