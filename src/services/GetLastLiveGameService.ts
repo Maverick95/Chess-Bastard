@@ -29,7 +29,8 @@ const GetLastLiveGameYearMonth = (username: string, year: number, month: number,
                     opponent: value.white.username,
                     playerColour: 'black',
                     result: value.black.result
-                })
+                }),
+                pgn: value.pgn,
             })
         )[0] ?? null);
 };

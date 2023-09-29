@@ -188,3 +188,21 @@
 .chess-player-flip {
     cursor: pointer;
 }
+
+.chess-lastgame-grid {
+    height: 100%;
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: ". header-white header-black .";
+}
+
+.chess-lastgame-header-white {
+    grid-area: header-white;
+    background-color: white;
+}
+
+.chess-lastgame-header-black {
+    grid-area: header-black;
+    background-color: black;
+}

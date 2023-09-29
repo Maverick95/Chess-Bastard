@@ -5,7 +5,8 @@ interface Game {
     player: string,
     opponent: string,
     playerColour: "white" | "black",
-    result: string
+    result: string,
+    pgn: string,
 }
 
 export default Game;
