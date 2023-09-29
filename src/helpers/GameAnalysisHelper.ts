@@ -1,10 +1,11 @@
 import { parseGame } from '@mliebelt/pgn-parser';
+import { GameAnalysis, createDefaultGameAnalysis } from 'models/GameAnalysis';
 
-const getGameAnalysisFromPGN = (pgn: string): any => {
+const getGameAnalysisFromPGN = (pgn: string): GameAnalysis => {
 
-    const result = parseGame(pgn);
+    const tree = parseGame(pgn);
+    const result = createDefaultGameAnalysis();
     return result;
-
 };
 
 export default getGameAnalysisFromPGN;
