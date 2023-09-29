@@ -3,6 +3,7 @@ import Player from '../../models/Player';
 import GetPlayerService from '../../services/GetPlayerService';
 import './ChessPlayerComponent.css';
 import { getDateTimeDifferenceDescription } from '../../helpers/DateTimeHelpers';
+import { useQuery } from 'react-query';
 
 interface IProps {
     username: string;
@@ -50,38 +51,24 @@ const SuccessComponent: React.FC<Player> = ({ username, avatar, lastOnline }) =>
 
 const ChessPlayerComponent: React.FC<IProps> = ({ username }) => {
 
-    const [state, setState] = useState<IState>({ status: 'loading' });
+    const {
+        isError,
+        isLoading,
+        isSuccess,
+        data } = useQuery(
+            `query-chess-player-${username}`,
+            () => GetPlayerService(username),
+            {
+                refetchOnWindowFocus: false
+            });
 
-    useEffect(() => {
-        setState({ status: 'loading' });
-        const getData = async () => {
-            try {
-                const player = await GetPlayerService(username);
-                setState({ status: 'success', player });
-            }
-            catch {
-                setState({ status: 'error' });
-            }
-        };
-        getData();
-    }, [username]);
-
-    const sectionClassName = state.status === 'success' ? 'chess-player-card' : 'chess-player-card chess-centered'; 
+    const sectionClassName = isSuccess ? 'chess-player-card' : 'chess-player-card chess-centered'; 
     
     return (
         <section className={sectionClassName}>
-            {
-                state.status === 'loading' &&
-                <LoadingComponent />
-            }
-            {
-                state.status === 'error' &&
-                <ErrorComponent username={username} />
-            }
-            {
-                state.status === 'success' &&
-                <SuccessComponent {...state.player} />
-            }
+            { isLoading && <LoadingComponent /> }
+            { isError && <ErrorComponent username={username} /> }
+            { isSuccess && <SuccessComponent {...data} /> }
         </section>
     );
 };
