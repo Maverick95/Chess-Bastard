@@ -2,6 +2,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import './ChessPanelComponent.css';
 import ChessPlayerComponent from 'components/ChessPlayer/ChessPlayerComponent';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import players from 'assets/players.json';
 
 type Unit = 'seconds' | 'minutes' | 'hours' | 'days' | 'weeks';
 
@@ -21,14 +22,6 @@ const ranges: Ranges = {
     'days': { min: 1, max: 6 },
     'weeks': { min: 1, max: 30 },
 };
-
-const users: string[] = [
-    "cheezburgers",
-    "jamescookpandp",
-    "nickemmerson",
-    "pasp86",
-    "lapsedpacifist"
-];
 
 const queryClient = new QueryClient();
 
@@ -75,8 +68,10 @@ const ChessPanelComponent: React.FC = () => {
         <QueryClientProvider client={queryClient}>
             <div className="chess-panel">
                 {
-                    users.map((username: string) =>
-                        <ChessPlayerComponent {...{ username, lastLiveGameSeconds }} key={`user-${username}`} />)
+                    players.map((player) => {
+                        const { username } = player;
+                        return <ChessPlayerComponent {...{ username, lastLiveGameSeconds }} key={`user-${username}`} />;
+                    })
                 }
                 <div className="chess-time-selector">
                     <span>look for games within last</span>
